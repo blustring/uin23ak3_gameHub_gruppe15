@@ -6,6 +6,23 @@
 //Font variables
 $headerfont: 'Kanit', sans-serif;
 $textfont: 'Mulish', sans-serif;
+//COLORS
+$red: #C00100;
+$orange: #FFA100;
+$black: #000000;
+$white: #ffffff;
+$light-grey: #f3f3f3;
+$dark-grey: #232323;
+$green: #6ea100;
+
+$warning: $orange;
+$success: $green;
+$error: $red;
+
+//SIZES
+$maxwidth: 1200px;
+$maxsentencelength: 60rem;
+$gaps: 1.5rem;
 
 //Font classes
 .headerfont {
@@ -28,7 +45,15 @@ body {
     //pack out .textfont inside body for css rules:
     @extend .textfont;
     font-size: 18px;
+
+
 }
+
+img {
+    max-width: 500px;
+}
+
+
 
 //BOX-SIZING
 div,
@@ -50,21 +75,3 @@ header {
 a {
     @extend .transition;
 }
-
-//COLORS
-$red: #C00100;
-$orange: #FFA100;
-$black: #000000;
-$white: #ffffff;
-$light-grey: #f3f3f3;
-$dark-grey: #232323;
-$green: #6ea100;
-
-$warning: $orange;
-$success: $green;
-$error: $red;
-
-//SIZES
-$maxwidth: 1200px;
-$maxsentencelength: 60rem;
-$gaps: 1.5rem;

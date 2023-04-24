@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 //import { Link, Outlet } from "react-router-dom";
-import Dashboard from "./Dashboard";
+//import Dashboard from "./Dashboard";
 export default function Layout() {
     return (
         <div id="container">
@@ -19,7 +19,7 @@ export default function Layout() {
             <main>
                 {/* Usikker på hva som er best å bruke av <Outlet/>  og <Dashboard/> her */}
                 {/*<Outlet />*/}
-                <Dashboard />
+                <Outlet />
             </main>
             <footer>
                 <p> The data used is from the API: <a href="https://rawg.io/"> https://rawg.io/ </a> </p>

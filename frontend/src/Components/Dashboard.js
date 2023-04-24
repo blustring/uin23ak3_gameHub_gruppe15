@@ -9,17 +9,22 @@ export default function Dashboard({ games, getGames }) {
     return (
         <main>
             <section id="gameshop">
-                {/* For GameShop, hent ut de 3 nyeste spillene for visning i dashboard. */}
+                {/* For GameShop, hent ut de 3 nyeste spillene for visning i dashboard.Skal ha en knapp BUY */}
                 <h4>GAMESHOP</h4>
-
-                {games?.map((game, index) => (
-                    <GameCard key={index} title={game.name}
-                        img={game.background_image} genre={game.genres}
-                        slug={game.slug} />
-                ))}
                 <Link to="/gameshop">
                     <button type="submit">Visit shop</button>
                 </Link>
+
+                {games?.map((game, index) => (
+                    <GameCard key={index} title={game.name}
+                        img={game.background_image}
+                        genre={game.genres.map(genreList => genreList.name).join(", ")}
+                        slug={game.slug} >
+                        <button>BUY</button>
+                    </GameCard>
+                ))}
+
+
 
             </section>
 

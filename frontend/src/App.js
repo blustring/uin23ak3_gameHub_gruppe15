@@ -16,18 +16,28 @@ export default function App() {
   async function getGames(type) {
     let url;
     if (type === "all") {
-      url = "https://api.rawg.io/api/games?key=6a68d1095df14ebb9f742dba2387e7ef";
+      url = "https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770";
     } else if (type === "gameshop") {
-      url = "https://api.rawg.io/api/games?key=6a68d1095df14ebb9f742dba2387e7ef&ordering=-released&page_size=3";
+      url = "https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770&ordering=-released&page_size=3";
     }
     const response = await fetch(url);
     const data = await response.json();
     return data.results;
   }
-  
 
+
+
+  //Henter alle:
   useEffect(() => {
     getGames("all").then((data) => {
+      setGames(data);
+      console.log(data);
+    });
+  }, []);
+
+  //Henter de tre nyeste: 
+  useEffect(() => {
+    getGames("gameshop").then((data) => {
       setGames(data);
       console.log(data);
     });
