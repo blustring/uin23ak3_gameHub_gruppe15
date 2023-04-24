@@ -11,25 +11,26 @@ import GamePage from './Components/GamePage';
 import Dashboard from './Components/Dashboard';
 
 export default function App() {
-  const [games, setGames] = useState([])
+  const [games, setGames] = useState([]);
 
-  const getGames = async (type) => {
+  async function getGames(type) {
     let url;
-    //Henter ut alt, usikker på om vi trenger denne
     if (type === "all") {
-      url = "https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770";
-    }
-    //Skal hente ut de tre siste på dashboard
-    else if (type === "gameshop") {
-      url = "https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770&ordering=-released&page_size=3";
+      url = "https://api.rawg.io/api/games?key=6a68d1095df14ebb9f742dba2387e7ef";
+    } else if (type === "gameshop") {
+      url = "https://api.rawg.io/api/games?key=6a68d1095df14ebb9f742dba2387e7ef&ordering=-released&page_size=3";
     }
     const response = await fetch(url);
     const data = await response.json();
-    setGames(data.results);
-  };
+    return data.results;
+  }
+  
 
   useEffect(() => {
-    getGames();
+    getGames("all").then((data) => {
+      setGames(data);
+      console.log(data);
+    });
   }, []);
 
   return (
@@ -37,7 +38,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<Dashboard games={games} getGames={getGames} />} />
         <Route path=':slug' element={<GamePage games={games} />} />
-        <Route path="/gameshop" element={<GameShop games={games} />} />
+        <Route path="/gameshop" element={<GameShop games={games} getGames={getGames} />} />
         <Route path="/mygames" element={<MyGames />} />
         <Route path="/favourites" element={<MyFavourites />} />
       </Route>
