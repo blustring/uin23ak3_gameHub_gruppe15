@@ -1,2 +1,2 @@
-//ComponentBranch
+//ComponentBranch.
 export default function MyFavourites() { }
