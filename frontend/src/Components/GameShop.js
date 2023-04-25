@@ -18,7 +18,6 @@ export default function GameShop({ games }) {
                     img={game.background_image} genre={game.genres}
                     slug={game.slug} />
             ))}
-
         </section>
     )
 } 

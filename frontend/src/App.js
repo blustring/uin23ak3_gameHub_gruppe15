@@ -25,8 +25,6 @@ export default function App() {
     return data.results;
   }
 
-
-
   //Henter alle:
   useEffect(() => {
     getGames("all").then((data) => {

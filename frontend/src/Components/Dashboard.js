@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 // (enten hele spillkortet, eller med en knapp/lenke til et spill).
 
 export default function Dashboard({ games, getGames }) {
+    console.log("Adventure games: ", games.filter((game) => game.genres.find((genre) => genre.slug === "Racing")).length);
+
 
     return (
         <main>
@@ -15,23 +17,40 @@ export default function Dashboard({ games, getGames }) {
                     <button type="submit">Visit shop</button>
                 </Link>
 
-                {games?.map((game, index) => (
-                    <GameCard key={index} title={game.name}
+                {games
+                    ?.sort((a, b) => new Date(b.released) - new Date(a.released)) // sort games by date
+                    .slice(0, 3) // select the first 3 games
+                    .map((game, index) => (
+                    <GameCard
+                        key={index}
+                        title={game.name}
                         img={game.background_image}
-                        genre={game.genres.map(genreList => genreList.name).join(", ")}
-                        slug={game.slug} >
+                        genre={game.genres.map((genreList) => genreList.name).join(", ")}
+                        slug={game.slug}
+                    >
                         <button>BUY</button>
                     </GameCard>
-                ))}
-
-
-
+                    ))}
             </section>
 
             <section id="myGames">
-                {/* For MyGames, hent 4 spill fra en valgri sjanger som vises i seksjonen My Games i dashboard, */}
                 <h4>My GAMES-LIBRARY</h4>
-                <button type="submit" /* onClick={getMyGames} */ >Go to library</button>
+                {games && games
+                    .filter((game) => game.genres.find((genre) => genre.slug === "role-playing-games-rpg")) // filter games by rpg genre
+                    .slice(0, 4) // select the first 4 games
+                    .map((game, index) => (
+                        <GameCard
+                            key={index}
+                            title={game.name}
+                            img={game.background_image}
+                            genre={game.genres.map((genreList) => genreList.name).join(", ")}
+                            slug={game.slug}
+                        >
+                            <button type="submit">Go to library</button>
+                        </GameCard>
+                    ))
+                }
+
             </section>
 
             <section id="myFavourites">

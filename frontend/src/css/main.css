@@ -20,7 +20,8 @@ body {
 }
 
 img {
-  max-width: 500px;
+  max-width: 250px;
+  max-height: 150px;
 }
 
 div,
