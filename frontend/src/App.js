@@ -14,7 +14,9 @@ export default function App() {
   const [games, setGames] = useState([]);
 
   const getGames = async () => {
-    fetch(`https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770`)
+    //default page_size=20 
+    //setting page_size=100 to get enough games
+    fetch(`https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770&page_size=100`)
       .then(response => response.json())
       .then(data => setGames(data.results))
       .catch(error => console.error(error));
