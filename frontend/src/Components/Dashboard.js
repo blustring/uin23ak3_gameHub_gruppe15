@@ -1,4 +1,4 @@
-//ComponentBranch
+//ComponentBranch...
 import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 //Et spill i dashboard, My Games-librariet og My Favourites skal kunne klikkes paa
