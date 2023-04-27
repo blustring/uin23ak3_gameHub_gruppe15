@@ -1,2 +1,7 @@
 //ComponentBranch.
-export default function MyFavourites() { }
+export default function MyFavourites() {
+
+
+
+
+}
