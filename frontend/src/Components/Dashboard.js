@@ -21,15 +21,15 @@ export default function Dashboard({ games, getGames }) {
                     ?.sort((a, b) => new Date(b.released) - new Date(a.released)) // sort games by date
                     .slice(0, 3) // select the first 3 games
                     .map((game, index) => (
-                    <GameCard
-                        key={index}
-                        title={game.name}
-                        img={game.background_image}
-                        genre={game.genres.map((genreList) => genreList.name).join(", ")}
-                        slug={game.slug}
-                    >
-                        <button>BUY</button>
-                    </GameCard>
+                        <GameCard
+                            key={index}
+                            title={game.name}
+                            img={game.background_image}
+                            genre={game.genres.map((genreList) => genreList.name).join(", ")}
+                            slug={game.slug}
+                        >
+                            <button>BUY</button>
+                        </GameCard>
                     ))}
             </section>
 
@@ -50,11 +50,14 @@ export default function Dashboard({ games, getGames }) {
                         </GameCard>
                     ))
                 }
-
+                <Link to="/mygames">
+                    <button type="submit">Visit shop</button>
+                </Link>
             </section>
 
             <section id="myFavourites">
                 {/*SE oppgavebeskrivelse for funksjonaliteter i favorittseksjonen*/}
+                {/*Hent 2 filmer*/}
                 <h4>MY FAVOURITES</h4>
                 <button type="submit" /* onClick={getMyFavourites} */ >Go to favourites</button>
             </section>

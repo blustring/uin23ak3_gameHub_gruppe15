@@ -13,11 +13,20 @@ export default function GameShop({ games }) {
     return (
         <section className='gameshop-view'>
             <h2>GAMESHOP</h2>
-            {games?.map((game, index) => (
-                <GameCard key={index} title={game.name}
-                    img={game.background_image} genre={game.genres}
-                    slug={game.slug} />
-            ))}
+            {games
+                ?.sort((a, b) => new Date(b.released) - new Date(a.released)) // sort games by date
+                .slice(0, 10) // select the first 10 games
+                .map((game, index) => (
+                    <GameCard
+                        key={index}
+                        title={game.name}
+                        img={game.background_image}
+                        genre={game.genres.map((genreList) => genreList.name).join(", ")}
+                        slug={game.slug}
+                    >
+                        <button>BUY</button>
+                    </GameCard>
+                ))}
         </section>
     )
 } 

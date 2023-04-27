@@ -33,13 +33,13 @@ export default function App() {
     });
   }, []);
 
-  //Henter de tre nyeste: 
+  /*//Henter de tre nyeste: 
   useEffect(() => {
     getGames("gameshop").then((data) => {
       setGames(data);
       console.log(data);
     });
-  }, []);
+  }, []);*/
 
   return (
     <Routes>
@@ -47,7 +47,7 @@ export default function App() {
         <Route index element={<Dashboard games={games} getGames={getGames} />} />
         <Route path=':slug' element={<GamePage games={games} />} />
         <Route path="/gameshop" element={<GameShop games={games} getGames={getGames} />} />
-        <Route path="/mygames" element={<MyGames />} />
+        <Route path="/mygames" element={<MyGames games={games} getGames={getGames} />} />
         <Route path="/favourites" element={<MyFavourites />} />
       </Route>
     </Routes >
