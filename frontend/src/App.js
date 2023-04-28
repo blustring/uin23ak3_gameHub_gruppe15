@@ -12,6 +12,7 @@ import Dashboard from './Components/Dashboard';
 
 export default function App() {
   const [games, setGames] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   const getGames = async () => {
     //default page_size=20 
@@ -26,40 +27,19 @@ export default function App() {
     getGames()
   }, [])
 
+  const handleAddFavorite = (game) => {
+    setFavorites(prevFavorites => [...prevFavorites, game])
+  }
 
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route element={<Layout onAddFavorite={handleAddFavorite} />}>
         <Route index element={<Dashboard games={games} getGames={getGames} />} />
-        <Route path='/game/:slug' element={<GamePage games={games} />} />
+        <Route path='/game/:slug' element={<GamePage games={games} onAddFavorite={setFavorites} />} />
         <Route path="/gameshop" element={<GameShop games={games} getGames={getGames} />} />
         <Route path="/mygames" element={<MyGames games={games} getGames={getGames} />} />
-        <Route path="/favourites" element={<MyFavourites />} />
+        <Route path="/myfavourites" element={<MyFavourites favorites={favorites} />} />
       </Route>
     </Routes >
   );
 }
-
-
-/*async function getGames(type) {
-  let url;
-  if (type === "all") {
-    url = "https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770";
-  } else if (type === "gameshop") {
-    url = "https://api.rawg.io/api/games?key=e00c96374e5247b58471e9ee8f5e4770&ordering=-released&page_size=3";
-  }
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.results;
-}*/
-
-  //Henter alle basert paa all:
-/*useEffect(() => {
-  getGames("all").then((data) => {
-    setGames(data);
-    console.log(data);
-  });
-}, []);*/
-
-
-

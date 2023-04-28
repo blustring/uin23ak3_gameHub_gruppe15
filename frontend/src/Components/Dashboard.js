@@ -69,7 +69,9 @@ export default function Dashboard({ games, getGames }) {
                 {/*SE oppgavebeskrivelse for funksjonaliteter i favorittseksjonen*/}
                 {/*Hent 2 filmer*/}
                 <h4>MY FAVOURITES</h4>
-                <button type="submit" /* onClick={getMyFavourites} */ >Go to favourites</button>
+                <button type="submit">
+                    <Link to="/myfavourites">Go to favourites</Link>
+                </button>
             </section>
         </main>
     )
