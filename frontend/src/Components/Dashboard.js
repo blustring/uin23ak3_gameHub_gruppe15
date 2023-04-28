@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 
 export default function Dashboard({ games, getGames }) {
     console.log("Adventure games: ", games.filter((game) => game.genres.find((genre) => genre.slug === "Racing")).length);
-
+    // Define the handleBuy function
+    function handleBuy(game) {
+        // Implement the logic for buying the game here
+        console.log(`Buy ${game.name}`);
+    }
 
     return (
         <main>
@@ -17,20 +21,26 @@ export default function Dashboard({ games, getGames }) {
                     <button type="submit">Visit shop</button>
                 </Link>
 
+
                 {games
                     ?.sort((a, b) => new Date(b.released) - new Date(a.released)) // sort games by date
                     .slice(0, 3) // select the first 3 games
                     .map((game, index) => (
-                        <GameCard
-                            key={index}
-                            title={game.name}
-                            img={game.background_image}
-                            genre={game.genres.map((genreList) => genreList.name).join(", ")}
-                            slug={game.slug}
-                        >
-                            <button>BUY</button>
-                        </GameCard>
-                    ))}
+                        <div key={index}>
+                            <GameCard
+                                title={game.name}
+                                img={game.background_image}
+                                genre={game.genres.map((genreList) => genreList.name).join(", ")}
+                                slug={game.slug}
+                            >
+
+                            </GameCard>
+                            <button onClick={() => handleBuy(game)}>Buy</button>
+                        </div>
+                    ))
+                }
+
+
             </section>
 
             <section id="myGames">
