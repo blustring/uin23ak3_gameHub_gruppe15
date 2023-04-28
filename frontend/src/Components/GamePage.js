@@ -1,28 +1,33 @@
-//ComponentBranch
-//GamePage, som viser et spill med all informasjon
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom"
-//import { useState, useEffect } from "react";
-
-export default function GamePage({ games }) {
-
-    //ComponentBranch
+export default function GamePage() {
     const { slug } = useParams();
-    //const [game, setGames] = useState({});
-    const game = games.find((g) => g?.games?.name.replace(/\s/g, "-").toLowerCase() === slug)
+    const [game, setGame] = useState({});
+    const [games, setGames] = useState([]);
 
-    //const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
+    const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
 
-    /*useEffect(() => {
+    useEffect(() => {
         fetch(`https://api.rawg.io/api/games/${slug}?key=${API_KEY}`)
-            .then(response => response.json())
-            .then(data => setGames(data))
-            .catch(error => console.log(error));
-    }, [slug])*/
+            .then((response) => response.json())
+            .then((data) => {
+                setGame(data);
+            })
+            .catch((error) => console.log(error));
+    }, [slug]);
 
+    useEffect(() => {
+        fetch(`https://api.rawg.io/api/games?search=${game?.name}&key=${API_KEY}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setGames(data.results);
+            })
+            .catch((error) => console.log(error));
+    }, [game]);
 
     return (
-        <section className="game-page" >
+        <section className="game-page">
             <div className="gamePage-img">
                 <img src={game?.background_image} alt={game?.name} />
             </div>
@@ -33,29 +38,23 @@ export default function GamePage({ games }) {
 
             <div className="games-rating">
                 <p>{game?.rating}</p>
-                {/*eller : <p>{game.ratings}</p> Er usikker på hvem som er riktig
-                    Her skal det legges inn som en firkant med ratingverdi inni, 
-        og mulighet til å lagre som favoritt ved å trykke på hjertet*/}
             </div>
 
             <div className="game-data">
-                <img src={game?.background_image} alt={game?.name} />
-                <h1>{game?.name}</h1>
+
                 <p>Plot: {game?.description_raw}</p>
-                <p>Genre:{game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
-                <p>Publisher: {game?.publishers}</p>
-                <p>Platforms: {game?.platforms}</p>
+                <p>Genre: {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
+                <p>Publisher: {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
+                <p>Platforms: {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
             </div>
 
             <div className="game-details">
-                <p>Tags: {game?.tags}</p>
-                {/*Tags skal være egne trykkbare knapper med tilhørende tags??*/}
-
+                <p>Tags: {game?.tags?.map((tag) => tag.name).join(", ")}</p>
             </div>
             <button>Legg til i favoritt</button>
-            <div><button>BUY</button></div>
+            <div>
+                <button>Kjøp</button>
+            </div>
         </section>
-
-    )
-
+    );
 }
