@@ -56,12 +56,12 @@ export default function Dashboard({ games, getGames }) {
                             genre={game.genres.map((genreList) => genreList.name).join(", ")}
                             slug={game.slug}
                         >
-                            <button type="submit">Go to library</button>
+
                         </GameCard>
                     ))
                 }
                 <Link to="/mygames">
-                    <button type="submit">Visit shop</button>
+                    <button type="submit">Go to library</button>
                 </Link>
             </section>
 
