@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function GameCard({ title, img, genre, slug }) {
     return (
         <article className="game-card">
-            <Link to={slug} className="link">
+            <Link to={`game/${slug}`} className="link">
                 <img src={img} alt={title} />
             </Link>
             {/*Et spill i dashboard, My Games-librariet og My Favourites skal kunne klikkes paa
