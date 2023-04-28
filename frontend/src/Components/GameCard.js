@@ -18,7 +18,7 @@ export default function GameCard({ title, img, genre, slug }) {
             <h4>{title}</h4>
             <p>{genre}</p>
             <Link to={`/game/${slug}`} className="link">
-                <button>VIS MER</button>
+                <button>More info</button>
             </Link>
 
         </article>
