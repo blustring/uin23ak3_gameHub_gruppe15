@@ -11,9 +11,9 @@ export default function Layout() {
                 </Link>
                 <nav>
                     <ul>
-                        <li><Link to="/gameshop"></Link>Shop</li>
-                        <li><Link to="/mygames"></Link>My Games</li>
-                        <li><Link to="/favourites"></Link>Favourites</li>
+                        <li><Link to="/gameshop">Shop</Link></li>
+                        <li><Link to="/mygames">My Games</Link></li>
+                        <li><Link to="/favourites">Favourites</Link></li>
                     </ul>
                 </nav>
             </header>

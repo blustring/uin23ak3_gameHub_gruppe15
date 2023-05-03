@@ -2,7 +2,7 @@
 //Litt usikker op den sluggen
 import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
-import { Link } from 'react-router-dom';
+
 
 export default function MyGames() {
     const getGamesByGenre = async () => {
