@@ -1,13 +1,16 @@
-//ComponentBranch
-
-//Merk at disse skal ha en knapp "BUY" med mulighet 
-//for å kjope som linker til kjopslenken
-
-//Hent ut de 10 nyeste for visning på /gameshop (når du klikker linken "Visit Shop")
-
 import GameCard from './GameCard';
+import { useState } from "react";
 
 export default function GameShop({ games }) {
+    const [cart, setCart] = useState([]);
+
+    const handleBuyClick = (game) => {
+        const searchTerm = encodeURIComponent(game.name);
+        const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
+        window.open(steamUrl, "_blank");
+        setCart([...cart, game]);
+    };
+
     console.log(games);
 
     return (
@@ -24,8 +27,8 @@ export default function GameShop({ games }) {
                             genre={game.genres.map((genreList) => genreList.name).join(", ")}
                             slug={game.slug}
                         />
-                        <button className="buy-button">BUY</button>
+                        <button className="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
                     </div>))}
         </section>
     )
-} 
+}
