@@ -32,7 +32,7 @@ export default function MyFavorites() {
           </div>
         </div>
       ))}
-      <button type="button" onClick={() => window.location.href='/myfavorites'}>
+      <button type="button" onClick={() => window.location.href = '/myfavorites'}>
         Go to favorites
       </button>
     </div>
