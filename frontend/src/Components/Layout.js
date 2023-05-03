@@ -13,7 +13,7 @@ export default function Layout() {
                     <ul>
                         <li><Link to="/gameshop">Shop</Link></li>
                         <li><Link to="/mygames">My Games</Link></li>
-                        <li><Link to="/favourites">Favourites</Link></li>
+                        <li><Link to="/myfavourites">Favourites</Link></li>
                     </ul>
                 </nav>
             </header>
