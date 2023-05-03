@@ -23,6 +23,24 @@ img {
   max-width: 350px;
 }
 
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tags-button {
+  background-color: #f3f3f3;
+  padding: 0.3rem;
+  margin: 4px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  border: #616161 solid;
+}
+.tags-button:hover {
+  background-color: #ddd;
+}
+
 div,
 article,
 header,

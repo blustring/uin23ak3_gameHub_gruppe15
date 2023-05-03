@@ -34,8 +34,8 @@ export default function GamePage({ onAddFavorite }) {
     });
     localStorage.setItem(game.id, JSON.stringify(game));
   };
-  
-  
+
+
 
   return (
     <section className="game-page">
@@ -59,14 +59,21 @@ export default function GamePage({ onAddFavorite }) {
       </div>
 
       <div className="game-details">
-        <p>Tags: {game?.tags?.map((tag) => tag.name).join(", ")}</p>
+        <p>Tags:</p>
+        <div className="tags">
+          {game?.tags?.map((tag) => (
+            <a href="#" className="tags-button">
+              {tag.name}
+            </a>
+          ))}
+        </div>
       </div>
       <button onClick={handleAddToFavorite}>Add to favorites</button>
       <div>
         <button>Kjøp</button>
       </div>
       <div>
-        
+
       </div>
     </section>
   );
