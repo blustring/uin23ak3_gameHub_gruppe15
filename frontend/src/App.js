@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import Layout from './Components/Layout';
 import GameShop from './Components/GameShop';
-import MyGames from './Components/MyGames';
+import MyGames from './lib/sanity/MyGames';
 import MyFavourites from './Components/MyFavourites';
 import GamePage from './Components/GamePage';
 import Dashboard from './Components/Dashboard';
