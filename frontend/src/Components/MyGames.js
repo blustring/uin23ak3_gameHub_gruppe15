@@ -2,7 +2,7 @@
 //Litt usikker op den sluggen
 import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
-import { Link } from 'react-router-dom';
+
 
 export default function MyGames() {
     const getGamesByGenre = async () => {
@@ -21,18 +21,25 @@ export default function MyGames() {
     }, []);
 
     return (
-        <section className='mygames-view'>
-            <h2>MY GAMES LIBRARY</h2>
-            {gamesByGenre.map((game, index) => (
+<section class="gameshop-view">
+  <h2>MY GAMES LIBRARY</h2>
+      <div class="gameshop-grid">
+    {gamesByGenre.map((game, index) => (
 
-                <GameCard
-                    key={index}
-                    title={game.name}
-                    img={game.background_image}
-                    genre={game.genres.map((genreList) => genreList.name).join(", ")}
-                    slug={game.slug}
-                />
-            ))}
-        </section>
+      
+<div key={index} class="game-card-wrapper">
+<div class="game-card-img">
+  <img src={game.background_image} alt={game.name} />
+</div>
+<div class="game-card-details">
+  <h4>{game.name}</h4>
+  <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
+  <a href={`/game/${game.slug}`} class="link">
+    <button class="buy-button">More info</button>
+  </a> </div> </div>
+    ))}
+  </div>
+</section>
+
     );
 }
