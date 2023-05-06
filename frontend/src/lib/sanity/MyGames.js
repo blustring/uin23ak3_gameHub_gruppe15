@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import sanityClient from './sanityClient';
 
 
-
 const MyGames = () => {
   const [games, setGames] = useState([]);
 
@@ -13,6 +12,7 @@ const MyGames = () => {
     }
 
     getGames();
+    console.log(games[0]);
   }, []);
 
   async function fetchGames() {
