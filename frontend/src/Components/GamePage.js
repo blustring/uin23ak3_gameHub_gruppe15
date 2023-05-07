@@ -43,37 +43,25 @@ export default function GamePage({ onAddFavorite }) {
       
   
     return (
-      <section class="game-page">
-      <div id="gamePage-Image">
+      <section id="gamePageAlone">
+      <div id="imgGamePage">
         <img src={game?.background_image} alt={game?.name} />
       </div>
     
-      <div class="gamePage-title">
+      <div id="detailsGamePage"> 
+      <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
         <h1>{game?.name}</h1>
-      </div>
+        <p><b>Rating: </b>{game?.rating}</p>
+        <p><b>Plot:</b> {game?.description_raw}</p>
+        <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
+        <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
+        <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
+      <button class="btn-fav" onClick={handleAddToFavorite}>Add to favorites</button>
+        <button class="buy-button" onClick={handleBuyClick}>Buy</button></div>
     
-      <div class="games-rating">
-        <p>{game?.rating}</p>
-      </div>
-    
-      <div class="game-data">
-        <p>Plot: {game?.description_raw}</p>
-        <p>Genre: {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
-        <p>Publisher: {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
-        <p>Platforms: {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
-      </div>
-    
-      <div class="game-details">
-        <p>Tags: {game?.tags?.map((tag) => tag.name).join(", ")}</p>
-      </div>
-    
-      <button class="add-to-favorites" onClick={handleAddToFavorite}>Add to favorites</button>
-    
-      <div>
-        <button class="buy" onClick={handleBuyClick}>Buy</button>
-      </div>
+        
+      
     </section>
-    
     
     
     

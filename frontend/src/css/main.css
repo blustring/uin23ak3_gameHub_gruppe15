@@ -1,18 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&family=Mulish:wght@400;700&display=swap");
 
+.vl {
+  border-left: 6px solid rgb(204, 7, 7);
 
+  margin-right: 20px;
+}
 
 
 /* Style for buttons */
 button {
-  background-color: #545755; /* Green */
+  background-color: #545755; 
   border: none;
   color: rgb(243, 241, 241);
   padding:8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
+  font-size: 15px;
   margin: 4px 2px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -21,71 +25,31 @@ button {
 
 /* Style for buttons when hovered */
 button:hover {
-  background-color: #f56950;
+  background-color: #021b02;
 }
 
 
 /*---------------GamePage Design---------------------*/
-.game-page {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  margin: 0 auto;
-}
-/**/#gamePage-Image img {
-  width: 50%;
-  align-items: center;
-  padding-left: 25rem;
-
+#gamePageAlone{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 30px;
+  margin-left: 20px;
+  gap: 2rem;
 
 }
 
-
-
-.gamePage-title {
+#imgGamePage{
+  grid-column: 1 / 2
+}
+#imgGamePage img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
 }
-
-.gamePage-title h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-}
-
-.games-rating {
-  
-}
-
-.games-rating p {
-  font-size: 1.5rem;
-  color: #f1c40f;
-  text-align: center;
-}
-
-.game-data {
-
-  text-align: center;
-}
-
-.game-data p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: #333;
-}
-
-.game-data p:first-of-type {
-  font-weight: bold;
-}
-
-.game-details {
-  margin-top: 30px;
-}
-
-.game-details p {
-  font-size: 1.2rem;
-  color: #333;
-  text-align: center;
+#detailsGamePage{
+  grid-column: 2 / 3
 }
 
 /*----------------Layout---------------*/
@@ -109,8 +73,8 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3498db;
-  color: #fff;
+  background-color: #77797a;
+  color: #b69b9b;
   padding: 10px;
 }
 
@@ -181,15 +145,19 @@ button:hover {
   text-decoration: underline;
 }
 
-/*----------------------Dashboard---------------*/
+
 
 
 
 /*---------------gridit---------------------*/
 .gridt{
   display: flex;
-}
 
+}
+#linkdiv{
+  margin-top: 15px;
+  margin-left: 5px;
+}
 
 
 /*----------------Gamecard page----------------*/
@@ -216,11 +184,12 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+ 
 }
 
 .right h4 {
   margin: 0;
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .right p {
@@ -260,12 +229,14 @@ button:hover {
 .game-card-wrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   
 }
 
 .game-card-img {
   width: 100%;
   height: 100%;
+  
 }
 
 .game-card-img img {
@@ -288,7 +259,7 @@ button:hover {
 .game-card-details a {
   margin-top: 10px;
 }
-
+/*
 .buy-button {
   background-color: #4CAF50;
   color: white;
@@ -302,12 +273,13 @@ button:hover {
   background-color: #3e8e41;
 }
 
-/*----------------Dashboard------------*/
+----------------Dashboard------------*/
 #dashboardContainer{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: auto;
-  margin: auto;
+  padding: 10px;
+  margin: 10px;
+  
  
 }
 #gameshop{
@@ -316,8 +288,12 @@ button:hover {
 }
 #gameShopview{
   display: flex;
-  padding: 10px;
+  padding: 20px;
   margin-left: 10px;
+  border-style: solid;
+  border-color: #c20606;
+  background-color: #b1adad;
+
 }
 #myGames{
   grid-row: 2 / span 2;
@@ -330,10 +306,14 @@ justify-content: space-between;
 #libraryView{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
   
 }
-#myFavourites{
-  width: 500px;
+
+#myFavourites {
+  width: 450px;
+  margin-left: 60px;
+ 
 }
 
 

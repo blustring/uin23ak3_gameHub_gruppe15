@@ -90,12 +90,15 @@ export default function Dashboard({ games }) {
                 </div>
           </section>
 
+         
+
           <section id="myFavourites">
             <h2>MY FAVOURITES</h2>
-              {favoriteGames.slice(0, 4).map((game) => (
+              {favoriteGames.slice(0, 3).map((game) => (
                 <div key={game.id} class="game-card-wrapper">
-                  <div class="game-card-img"><h2>{game.name}</h2>
+                  <div class="vl"></div> <div class="game-card-img">
                       <img src={game.background_image} alt={game.name} />
+                      <h2>{game.name}</h2>
                   </div>
                   <div class="game-card-details">
                     

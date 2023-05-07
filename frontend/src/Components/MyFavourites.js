@@ -29,7 +29,7 @@ export default function MyFavorites() {
             <img src={game.background_image} alt={game.name} />
           </div>
           <div class="game-card-details">
-            <h4>{game.name}</h4> <button onClick={() => handleRemoveFromFavorites(game.id)}>
+            <h2>{game.name}</h2> <button onClick={() => handleRemoveFromFavorites(game.id)}>
             Remove from Favourites
           </button> 
             </div>      
