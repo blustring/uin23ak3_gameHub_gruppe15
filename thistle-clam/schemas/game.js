@@ -1,45 +1,82 @@
 export default {
-    name: 'game',
-    title: 'Game',
-    type: 'document',
-    fields: [
-      {
-        name: 'name',
-        type: 'string',
-        title: 'Name',
-        validation: Rule => Rule.required()
-      },
-      {
-        name: 'description',
-        type: 'text',
-        title: 'Description',
-        validation: Rule => Rule.required()
-      },
-      {
-        name: 'releaseDate',
-        type: 'date',
-        title: 'Release Date',
-        options: {
-          dateFormat: 'YYYY-MM-DD'
-        }
-      },
-      {
-        name: 'coverImage',
-        type: 'image',
-        title: 'Cover Image',
-        options: {
-          hotspot: true
-        },
-        fields: [
-          {
-            name: 'alt',
-            type: 'string',
-            title: 'Alternative Text',
-            description: 'Alternative text for screen readers and search engines. The description should describe the image and its context.'
-          }
-        ],
-        validation: Rule => Rule.required()
-      }
-    ]
-  }
-  
+  name: 'game',
+  title: 'Game',
+  type: 'document',
+  fields: [
+    {
+      name: 'id',
+      title: 'ID',
+      type: 'string',
+    },
+    {
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+    },
+    {
+      name: 'platforms',
+      title: 'Platforms',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
+      name: 'release_date',
+      title: 'Release Date',
+      type: 'date',
+    },
+    {
+      name: 'developer',
+      title: 'Developer',
+      type: 'string',
+    },
+    {
+      name: 'publisher',
+      title: 'Publisher',
+      type: 'string',
+    },
+    {
+      name: 'genres',
+      title: 'Genres',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'url',
+    },
+    {
+      name: 'rating',
+      title: 'Rating',
+      type: 'number',
+    },
+    {
+      name: 'summary',
+      title: 'Summary',
+      type: 'text',
+    },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
+      name: 'developers',
+      title: 'Developers',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
+      name: 'releaseDate',
+      title: 'Release Date (Alternate)',
+      type: 'date',
+    },
+    {
+      name: 'stores',
+      title: 'Stores',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+  ],
+};
