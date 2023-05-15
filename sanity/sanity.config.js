@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'thistle-clam',
+  title: 'sanity',
 
   projectId: 'tlexghg7',
   dataset: 'game_data',
