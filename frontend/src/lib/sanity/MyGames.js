@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import sanityClient from './sanityClient';
 
-
 const MyGames = () => {
   const [games, setGames] = useState([]);
 
@@ -12,24 +11,27 @@ const MyGames = () => {
     }
 
     getGames();
-    console.log(games[0]);
   }, []);
 
   async function fetchGames() {
-    const query = `*[_type == "game"] | order(publishedAt desc) [0...9] {
+    const query = `*[_type == "game"] {
       _id,
       name,
-      releaseDate,
+      release_date,
+      developer,
+      publisher,
+      genres,
+      image,
+      rating,
       summary,
-      coverImage,
-      "slug": slug.current
+      tags,
+      developers,
+      releaseDate,
+      stores
     }`;
     const fetchedGames = await sanityClient.fetch(query);
-    console.log(fetchedGames);
     return fetchedGames;
   }
-  
-
 
   return (
     <div>
@@ -38,9 +40,8 @@ const MyGames = () => {
         {games.map(game => (
           <li key={game._id}>
             <h2>{game.name}</h2>
-            <img src={game.coverImage} alt={game.name} />
-            <p>{game.summary}</p>
-            <p>Release Date: {game.releaseDate}</p>
+            <img src={game.image} alt={game.name} />
+            <p>Genre: {game.genres.join(", ")}</p>
           </li>
         ))}
       </ul>
