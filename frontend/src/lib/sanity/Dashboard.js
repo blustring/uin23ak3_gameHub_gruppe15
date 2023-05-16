@@ -1,9 +1,12 @@
-import GameCard from "./GameCard";
+import GameCard from "../../Components/GameCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import sanityClient from './sanityClient';
+import MyGames from "./MyGames";
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
+  const displayedGames = games.slice(0, 4);
 
   useEffect(() => {
     // retrieve favorite games from localStorage
@@ -26,6 +29,26 @@ export default function Dashboard({ games }) {
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
 
+  /*async function fetchGames() {
+    const query = `*[_type == "game"] {
+      _id,
+      name,
+      release_date,
+      developer,
+      publisher,
+      genres,
+      image,
+      rating,
+      summary,
+      tags,
+      developers,
+      releaseDate,
+      stores
+    }`;
+    const fetchedGames = await sanityClient.fetch(query);
+    return fetchedGames;
+  }
+*/
   return (
     <main>
       <section id="gameshop">
@@ -53,18 +76,7 @@ export default function Dashboard({ games }) {
 
       <section id="myGames">
         <h4>My GAMES-LIBRARY</h4>
-        {games
-          ?.filter((game) => game.genres.find((genre) => genre.slug === "role-playing-games-rpg"))
-          .slice(0, 4)
-          .map((game, index) => (
-            <GameCard
-              key={index}
-              title={game.name}
-              img={game.background_image}
-              genre={game.genres.map((genreList) => genreList.name).join(", ")}
-              slug={game.slug}
-            />
-          ))}
+        <MyGames games={games} displayCount={4} />
         <Link to="/mygames">
           <button type="button">Go to library</button>
         </Link>
@@ -80,6 +92,7 @@ export default function Dashboard({ games }) {
             </div>
           </div>
         ))}
+
         <Link to="/myfavourites">
           <button type="button">Go to favourites</button>
         </Link>

@@ -8,7 +8,7 @@ import GameShop from './Components/GameShop';
 import MyGames from './lib/sanity/MyGames';
 import MyFavourites from './Components/MyFavourites';
 import GamePage from './Components/GamePage';
-import Dashboard from './Components/Dashboard';
+import Dashboard from './lib/sanity/Dashboard';
 
 export default function App() {
   const [games, setGames] = useState([]);
