@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
-
   useEffect(() => {
     // retrieve favorite games from localStorage
     const favorites = Object.keys(localStorage).map((key) =>
@@ -27,63 +26,97 @@ export default function Dashboard({ games }) {
   };
 
   return (
-    <main>
+
+    <div id="dashboardContainer">
       <section id="gameshop">
-        <h4>GAMESHOP</h4>
-        <Link to="/gameshop">
-          <button type="button">Visit shop</button>
-        </Link>
-        {games
-          ?.sort((a, b) => new Date(b.released) - new Date(a.released))
-          .slice(0, 3)
-          .map((game, index) => (
-            <div key={index}>
-              <GameCard
-                title={game.name}
-                img={game.background_image}
-                genre={game.genres.map((genreList) => genreList.name).join(", ")}
-                slug={game.slug}
-              />
-              <button type="button" onClick={() => handleBuyClick(game)}>
-                Buy
-              </button>
-            </div>
-          ))}
+        <div className="gridt">
+
+          <h2>GAMESHOP</h2>
+
+
+          <div id="linkdiv" >
+            <Link to="/gameshop" >
+              <button type="submit">Visit shop</button>
+            </Link>
+          </div>
+        </div>
+        <div class="gameshop-grid" id="dashboardBorder">
+          {games
+            ?.sort((a, b) => new Date(b.released) - new Date(a.released))
+            .slice(3, 6)
+            .map((game, index) => (
+              <div key={index} class="game-card-wrapper" >
+                <div class="game-card-img">
+                  <img src={game.background_image} alt={game.name} />
+                </div>
+                <div class="game-card-details">
+                  <h2>{game.name}</h2>
+                  <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
+                  <a href={`/game/${game.slug}`} class="link">
+                    <button class="buy-button">More info</button><button class="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
+                  </a>
+
+                </div>
+              </div>
+            ))}
+        </div>
       </section>
 
       <section id="myGames">
-        <h4>My GAMES-LIBRARY</h4>
-        {games
-          ?.filter((game) => game.genres.find((genre) => genre.slug === "role-playing-games-rpg"))
-          .slice(0, 4)
-          .map((game, index) => (
-            <GameCard
-              key={index}
-              title={game.name}
-              img={game.background_image}
-              genre={game.genres.map((genreList) => genreList.name).join(", ")}
-              slug={game.slug}
-            />
-          ))}
-        <Link to="/mygames">
-          <button type="button">Go to library</button>
-        </Link>
+        <h2>MY GAMES-LIBRARY</h2>
+
+        <div id="libraryView">
+          {games
+            ?.filter((game) => game.genres.find((genre) => genre.slug === "role-playing-games-rpg"))
+            .slice(0, 4)
+            .map((game, index) => (
+              <div key={index} class="game-card-wrapper">
+                <div class="game-card-img">
+                  <img src={game.background_image} alt={game.name} />
+                </div>
+                <div class="game-card-details">
+                  <h2>{game.name}</h2>
+                  <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
+                  <a href={`/game/${game.slug}`} class="link">
+                    <button class="buy-button">More info</button>
+                  </a>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div>
+          <Link to="/mygames">
+            <button type="submit">Go to library</button>
+          </Link>
+        </div>
       </section>
 
+
+
       <section id="myFavourites">
-        <h4>MY FAVOURITES</h4>
-        {favoriteGames.slice(0, 4).map((game) => (
-          <div key={game.id} className="favorite-game">
-            <img src={game.background_image} alt={game.name} />
-            <div className="game-info">
-              <h3>{game.name}</h3>
+        <div className="vl">
+          <h2>MY FAVOURITES</h2>
+
+          {favoriteGames.slice(0, 2).map((game) => (
+            <div key={game.id} class="game-card-wrapper">
+              <div class="game-card-img">
+                <img src={game.background_image} alt={game.name} />
+                <h2>{game.name}</h2>
+              </div>
+
             </div>
-          </div>
-        ))}
-        <Link to="/myfavourites">
-          <button type="button">Go to favourites</button>
-        </Link>
+          ))}
+          <Link to="/myfavourites">
+            <button type="button">Go to favourites</button>
+          </Link>
+        </div>
+
       </section>
-    </main>
-  );
+
+
+    </div>
+
+
+
+  )
 }

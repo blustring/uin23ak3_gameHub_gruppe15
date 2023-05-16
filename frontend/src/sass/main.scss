@@ -1,75 +1,443 @@
-//Eksempelvariabler
-//Hentet fra https: //github.com/toremake/UIN_coursefiles_2023/blob/main/eksamen/_examvariables.scss
+$primary-color: #64a1bd;
+$secondary-color: #b69b9b;
+$background-color: #64a1bd;
+$button-color: #545755;
+$button-hover-color: #021b02;
+$game-page-padding: 30px;
+$game-page-gap: 2rem;
+$header-padding: 10px;
+$main-padding: 20px;
+$footer-padding: 10px;
+$footer-font-size: 1rem;
 
-//FONTS
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&family=Mulish:wght@400;700&display=swap');
-//Font variables
-$headerfont: 'Kanit', sans-serif;
-$textfont: 'Mulish', sans-serif;
-//COLORS
-$red: #C00100;
-$orange: #FFA100;
-$black: #000000;
-$white: #ffffff;
-$light-grey: #f3f3f3;
-$dark-grey: #232323;
-$green: #6ea100;
 
-$warning: $orange;
-$success: $green;
-$error: $red;
+@mixin button-style {
+  background-color: $button-color;
+  border: none;
+  color: rgb(243, 241, 241);
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 8px;
 
-//SIZES
-$maxwidth: 1200px;
-$maxsentencelength: 60rem;
-$gaps: 1.5rem;
-
-//Font classes
-.headerfont {
-    font-family: $headerfont;
-    font-weight: 700;
+  &:hover {
+    background-color: $button-hover-color;
+  }
 }
 
-.textfont {
-    font-family: $textfont;
-    font-weight: 400;
+.vl {
+  border-left: 6px solid rgb(204, 7, 7);
+  padding-left: 20px;
+  margin-left: 10px;
 }
 
-.textfont-strong,
-.textfont-bold {
-    font-family: $textfont;
-    font-weight: 700;
+/* Style for buttons */
+button {
+  @include button-style;
 }
 
-body {
-    //pack out .textfont inside body for css rules:
-    @extend .textfont;
-    font-size: 18px;
+/*---------------GamePage Design---------------------*/
+#gamePageAlone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: $game-page-padding;
+  margin-left: 10px;
+  gap: $game-page-gap;
 
 }
 
-img {
-    max-width: 350px;
+#imgGamePage {
+  grid-column: 1 / 2;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+#detailsGamePage {
+  grid-column: 2 / 3;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  #gamePageAlone {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    margin-left: 0;
+  }
+
+  #imgGamePage {
+    grid-column: auto;
+  }
+
+  #detailsGamePage {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #gamePageAlone {
+    padding: 10px;
+  }
 }
 
 
-//BOX-SIZING
-div,
-article,
-header,
-section,
-aside,
-span,
-footer,
-header {
-    box-sizing: border-box;
+
+
+
+/*----------------Layout---------------*/
+#layoutContainer {
+
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "main main"
+    "main main"
+    "footer footer";
 }
 
-//ANIMATION TRANSITION RULES
-.transition {
-    transition: ease-in-out .4s;
+
+
+/* Style the header */
+.header-nav {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: $header-padding;
+
+  .logo-container h2 {
+    font-size: 2rem;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .nav-container ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-container li {
+    margin-right: 20px;
+  }
+
+  .nav-container li:last-child {
+    margin-right: 0;
+  }
+
+  .nav-container a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #333;
+      color: #fff;
+      border-radius: 5px;
+    }
+  }
 }
 
-a {
-    @extend .transition;
+
+
+/* Style the main content */
+.main-div {
+  margin: 0 auto;
+  padding: $main-padding;
+}
+
+/* Style the footer */
+.footer-div {
+  grid-area: footer;
+  background-color: $background-color;
+  color: #fff;
+  padding: $footer-padding;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: $footer-font-size;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/*---------------gridit---------------------*/
+.gridt {
+  display: flex;
+}
+
+#linkdiv {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+/*----------------Gamecard page----------------*/
+.game-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  align-items: center;
+}
+
+.left img {
+  width: 100%;
+  height: auto;
+}
+
+.right {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+
+.right>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h4 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.right p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.right button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+}
+
+/*----------------GameShop page----------------*/
+.gameshop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.game-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+}
+
+.game-card-img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.game-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  gap: $game-page-gap;
+}
+
+.game-card-details {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.game-card-details h2,
+.game-card-details p {
+  margin: 0;
+  padding: 0;
+
+}
+
+
+
+/*----------------Dashboard------------*/
+#dashboardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+
+
+}
+
+#dashboardBorder {
+  border-style: solid;
+  border-width: 5px;
+  padding: 1rem;
+  background-color: gray;
+
+}
+
+#gameshop {
+  grid-column-start: span 3;
+}
+
+
+#myGames {
+  grid-row: 2 / span 2;
+  grid-column: 1 / span 2;
+}
+
+#myFavourites {
+  grid-row: 2 / span 3;
+  grid-column: 3 / span 3;
+
+
+}
+
+#libraryView {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  #dashboardContainer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  #myGames {
+    grid-row: 3 / span 2;
+    grid-column: 1;
+  }
+
+  #myFavourites {
+    grid-row: 6 / span 2;
+    grid-column: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+
+  #libraryView {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+
+  /* Styles for screens up to 768px */
+  .header-nav {
+    flex-direction: column;
+  }
+
+  .nav-container li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  /* Styles for screens between 769px and 1024px */
+  .nav-container li {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 1025px) {
+
+  /* Styles for screens larger than 1024px */
+  .header-nav {
+    justify-content: space-between;
+  }
+}
+
+
+
+/* Media Queries   .gameshop-grid  */
+@media (max-width: 768px) {
+
+  /* Styles for screens up to 768px */
+  .gameshop-grid,
+  #libraryView,
+  #myFavourites {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .game-card-wrapper,
+  #myFavourites {
+    flex-direction: column;
+  }
+
+  .game-card-img#libraryView,
+  #myFavourites {
+    height: auto;
+  }
+
+  .game-card-details,
+  #libraryView,
+  #myFavourites {
+    padding: 10px 0;
+  }
+
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Styles for screens between 769px and 1024px */
+    .gameshop-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+
+  }
+
+  @media (min-width: 1025px) {
+
+    /* Styles for screens larger than 1024px */
+    .gameshop-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
 }

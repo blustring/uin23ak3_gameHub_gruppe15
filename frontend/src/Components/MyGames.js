@@ -20,19 +20,30 @@ export default function MyGames() {
         });
     }, []);
 
-    return (
-        <section className='mygames-view'>
-            <h2>MY GAMES LIBRARY</h2>
-            {gamesByGenre.map((game, index) => (
+    useEffect(() => {
+      console.log(gamesByGenre); // Log the values in the console
+    }, [gamesByGenre]);
 
-                <GameCard
-                    key={index}
-                    title={game.name}
-                    img={game.background_image}
-                    genre={game.genres.map((genreList) => genreList.name).join(", ")}
-                    slug={game.slug}
-                />
-            ))}
-        </section>
+    return (
+<section class="gameshop-view">
+  <h2>MY GAMES LIBRARY</h2>
+      <div class="gameshop-grid">
+    {gamesByGenre.map((game, index) => (
+
+      
+<div key={index} class="game-card-wrapper">
+<div class="game-card-img">
+  <img src={game.background_image} alt={game.name} />
+</div>
+<div class="game-card-details">
+  <h2>{game.name}</h2>
+  <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
+  <a href={`/game/${game.slug}`} class="link">
+    <button class="buy-button">More info</button>
+  </a> </div> </div>
+    ))}
+  </div>
+</section>
+
     );
 }
