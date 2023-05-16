@@ -1,12 +1,21 @@
 import GameCard from "../../Components/GameCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import sanityClient from './sanityClient';
 import MyGames from "./MyGames";
+//import MyFavorites from "../../Components/MyFavourites";
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
-  const displayedGames = games.slice(0, 4);
+  const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
+  const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+
+  useEffect(() => {
+    const favorites = Object.keys(localStorage).map((key) =>
+      JSON.parse(localStorage.getItem(key))
+    );
+    setFavoriteGames(favorites);
+    setFavoriteGamesCount(favorites.length);
+  }, []);
 
   useEffect(() => {
     // retrieve favorite games from localStorage
@@ -28,27 +37,8 @@ export default function Dashboard({ games }) {
     // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
+   
 
-  /*async function fetchGames() {
-    const query = `*[_type == "game"] {
-      _id,
-      name,
-      release_date,
-      developer,
-      publisher,
-      genres,
-      image,
-      rating,
-      summary,
-      tags,
-      developers,
-      releaseDate,
-      stores
-    }`;
-    const fetchedGames = await sanityClient.fetch(query);
-    return fetchedGames;
-  }
-*/
   return (
     <main>
       <section id="gameshop">
@@ -75,28 +65,30 @@ export default function Dashboard({ games }) {
       </section>
 
       <section id="myGames">
-        <h4>My GAMES-LIBRARY</h4>
         <MyGames games={games} displayCount={4} />
         <Link to="/mygames">
           <button type="button">Go to library</button>
         </Link>
       </section>
 
-      <section id="myFavourites">
-        <h4>MY FAVOURITES</h4>
-        {favoriteGames.slice(0, 4).map((game) => (
-          <div key={game.id} className="favorite-game">
-            <img src={game.background_image} alt={game.name} />
-            <div className="game-info">
-              <h3>{game.name}</h3>
-            </div>
+      <section id="my-favorites">
+      <h4>My Favourites ({favoriteGamesCount} games)</h4>
+      {slicedFavoriteGames.map((game) => (
+        <div key={game.id} className="favorite-game">
+          <img src={game.background_image} alt={game.name} />
+          <div className="game-info">
+            <h3>{game.name}</h3>
+            <button onClick={() => handleRemoveFromFavorites(game.id)}>
+              Remove from Favorites
+            </button>
           </div>
-        ))}
-
-        <Link to="/myfavourites">
+        </div>
+      ))}
+      <Link to="/myfavourites">
           <button type="button">Go to favourites</button>
         </Link>
-      </section>
+    </section>
+
     </main>
   );
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
@@ -20,7 +20,7 @@ export default function MyFavorites() {
 
   return (
     <div className="favorites-container">
-      <h2>My Favorites</h2>
+      <h4>My Favourites </h4>
       {favoriteGames.map((game) => (
         <div key={game.id} className="favorite-game">
           <img src={game.background_image} alt={game.name} />
@@ -32,9 +32,6 @@ export default function MyFavorites() {
           </div>
         </div>
       ))}
-      <button type="button" onClick={() => window.location.href = '/myfavorites'}>
-        Go to favorites
-      </button>
     </div>
   );
 }

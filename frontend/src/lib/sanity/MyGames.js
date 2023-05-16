@@ -3,10 +3,11 @@ import sanityClient from './sanityClient';
 
 const MyGames = ({ games, displayCount }) => {
   const [fetchedGames, setFetchedGames] = useState([]);
+  const [gameCount, setGameCount] = useState(0); // Add gameCount state
 
   useEffect(() => {
     async function fetchGames() {
-      const query = `*[_type == "game"] {
+      const gamesQuery = `*[_type == "game"] {
         _id,
         name,
         release_date,
@@ -21,8 +22,15 @@ const MyGames = ({ games, displayCount }) => {
         releaseDate,
         stores
       }`;
-      const fetchedGames = await sanityClient.fetch(query);
+      const countQuery = `count(*[_type == "game"])`; // GROQ query to count games
+
+      const [fetchedGames, gameCount] = await Promise.all([
+        sanityClient.fetch(gamesQuery),
+        sanityClient.fetch(countQuery)
+      ]);
+
       setFetchedGames(fetchedGames);
+      setGameCount(gameCount);
     }
 
     fetchGames();
@@ -32,16 +40,14 @@ const MyGames = ({ games, displayCount }) => {
 
   return (
     <div>
-      <h1>My Games</h1>
-      <ul>
+      <h4>My Games-Library ({gameCount} games)</h4>
         {displayedGames.map((game) => (
-          <li key={game._id}>
-            <h2>{game.name}</h2>
+          <div key={game._id}>
+            <h4>{game.name}</h4>
             <img src={game.image} alt={game.name} />
             <p>Genre: {game.genres.join(", ")}</p>
-          </li>
+          </div>
         ))}
-      </ul>
     </div>
   );
 };
