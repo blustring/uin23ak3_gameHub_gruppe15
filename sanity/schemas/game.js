@@ -34,12 +34,19 @@ export default {
       title: 'Publisher',
       type: 'string',
     },
-    {
+    /*{
       name: 'genres',
       title: 'Genres',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'genres' }],
+    },*/
+    {
+      name: 'genres',
+      title: 'Genres',
+      type: 'reference',
+      to: [{ type: 'genres' }],
     },
+
     {
       name: 'image',
       title: 'Image',

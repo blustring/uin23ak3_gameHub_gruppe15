@@ -1,3 +1,3 @@
 import game from "./game";
-
-export const schemaTypes = [game]
+import genre from "./genre";
+export const schemaTypes = [game, genre]
