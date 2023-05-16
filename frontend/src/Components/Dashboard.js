@@ -30,9 +30,9 @@ export default function Dashboard({ games }) {
       <div id="dashboardContainer">
           <section id="gameshop">      
             <div className="gridt">
-              <div id="h3div">
+
                 <h2>GAMESHOP</h2>
-            </div>
+            
             
                <div id="linkdiv" >
                 <Link to="/gameshop" >
@@ -40,30 +40,31 @@ export default function Dashboard({ games }) {
                   </Link>
                 </div>  
               </div>       
-                <div id="gameShopview">
-                  {games
-                      ?.sort((a, b) => new Date(b.released) - new Date(a.released)) // sort games by date
-                      .slice(0, 3) // select the first 3 games
-                      .map((game, index) => (
-                        <div key={index} class="game-card-wrapper">
-                          <div class="game-card-img">
-                            <img src={game.background_image} alt={game.name} />
-                          </div>
-                          <div class="game-card-details">
-                            <h2>{game.name}</h2>
-                            <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
-                            <a href={`/game/${game.slug}`} class="link">
-                              <button class="buy-button">More info</button>
-                            </a>
-                            <button class="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
-                          </div>
-                        </div>               
-                      ))}
-                </div>
+              <div class="gameshop-grid" id="dashboardBorder">
+    {games 
+      ?.sort((a, b) => new Date(b.released) - new Date(a.released))
+      .slice(3,6)
+      .map((game, index) => (
+        <div key={index} class="game-card-wrapper" >
+          <div class="game-card-img">
+            <img src={game.background_image} alt={game.name} />
+          </div>
+        <div class="game-card-details">
+            <h2>{game.name}</h2>
+            <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
+            <a href={`/game/${game.slug}`} class="link">
+              <button class="buy-button">More info</button><button class="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
+            </a>
+            
+        </div>
+    </div>
+      ))}
+  </div>
           </section>
     
           <section id="myGames">
               <h2>MY GAMES-LIBRARY</h2>
+              
                 <div id="libraryView">
                   {games
                       ?.filter((game) => game.genres.find((genre) => genre.slug === "role-playing-games-rpg"))
@@ -90,25 +91,26 @@ export default function Dashboard({ games }) {
                 </div>
           </section>
 
-         
+    
 
           <section id="myFavourites">
-            <h2>MY FAVOURITES</h2>
+            <div className="vl">
+<h2>MY FAVOURITES</h2> 
+           
               {favoriteGames.slice(0, 3).map((game) => (
                 <div key={game.id} class="game-card-wrapper">
-                  <div class="vl"></div> <div class="game-card-img">
+                  <div class="game-card-img">
                       <img src={game.background_image} alt={game.name} />
                       <h2>{game.name}</h2>
                   </div>
-                  <div class="game-card-details">
-                    
-            
-                  </div>
+        
                 </div>
               ))}
               <Link to="/myfavourites">
                 <button type="button">Go to favourites</button>
               </Link>
+            </div>
+            
         </section>
     
 

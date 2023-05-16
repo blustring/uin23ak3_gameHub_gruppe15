@@ -20,6 +20,10 @@ export default function MyGames() {
         });
     }, []);
 
+    useEffect(() => {
+      console.log(gamesByGenre); // Log the values in the console
+    }, [gamesByGenre]);
+
     return (
 <section class="gameshop-view">
   <h2>MY GAMES LIBRARY</h2>
@@ -32,7 +36,7 @@ export default function MyGames() {
   <img src={game.background_image} alt={game.name} />
 </div>
 <div class="game-card-details">
-  <h4>{game.name}</h4>
+  <h2>{game.name}</h2>
   <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
   <a href={`/game/${game.slug}`} class="link">
     <button class="buy-button">More info</button>

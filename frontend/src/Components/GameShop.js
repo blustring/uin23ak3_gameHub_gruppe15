@@ -27,15 +27,15 @@ export default function GameShop({ games }) {
           <div class="game-card-img">
             <img src={game.background_image} alt={game.name} />
           </div>
-          <div class="game-card-details">
-            <h4>{game.name}</h4>
+        <div class="game-card-details">
+            <h2>{game.name}</h2>
             <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
             <a href={`/game/${game.slug}`} class="link">
-              <button class="buy-button">More info</button>
+              <button class="buy-button">More info</button><button class="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
             </a>
-            <button class="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
-          </div>
+            
         </div>
+    </div>
       ))}
   </div>
 </section>
