@@ -83,6 +83,7 @@ button:hover {
 .header-nav .logo-container h2 {
   font-size: 2rem;
   margin: 0;
+  padding-bottom: 5px;
 }
 .header-nav .nav-container ul {
   list-style: none;
@@ -102,7 +103,7 @@ button:hover {
   color: #333;
   text-decoration: none;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px;
   transition: all 0.3s ease;
 }
 .header-nav .nav-container a:hover {
@@ -248,7 +249,6 @@ button:hover {
   border-width: 5px;
   padding: 1rem;
   background-color: gray;
-  width: 100%;
 }
 
 #gameshop {
