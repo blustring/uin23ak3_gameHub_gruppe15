@@ -28,7 +28,7 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding: 30px;
-  margin-left: 20px;
+  margin-left: 10px;
   gap: 2rem;
 }
 
@@ -45,6 +45,25 @@ button:hover {
   grid-column: 2/3;
 }
 
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  #gamePageAlone {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    margin-left: 0;
+  }
+  #imgGamePage {
+    grid-column: auto;
+  }
+  #detailsGamePage {
+    grid-column: auto;
+  }
+}
+@media (max-width: 480px) {
+  #gamePageAlone {
+    padding: 10px;
+  }
+}
 /*----------------Layout---------------*/
 #layoutContainer {
   display: grid;
