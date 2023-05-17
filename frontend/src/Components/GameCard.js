@@ -1,7 +1,4 @@
-//ComponentBranch
-//GameCard, som viser et spillkort
 
-import { Link } from "react-router-dom";
 
 export default function GameCard({ title, img, genre, slug }) {
     return (

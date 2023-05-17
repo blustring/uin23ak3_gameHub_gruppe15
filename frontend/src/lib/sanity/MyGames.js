@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import sanityClient from './sanityClient';
 
 const MyGames = ({ games, displayCount }) => {
@@ -8,12 +9,13 @@ const MyGames = ({ games, displayCount }) => {
   useEffect(() => {
     async function fetchGames() {
       const gamesQuery = `*[_type == "game"] {
-        _id,
+        id,
+        slug,
         name,
         release_date,
         developer,
         publisher,
-        genres,
+        gameGenre[]->,
         image,
         rating,
         summary,
@@ -41,13 +43,18 @@ const MyGames = ({ games, displayCount }) => {
   return (
     <div>
       <h4>My Games-Library ({gameCount} games)</h4>
-        {displayedGames.map((game) => (
-          <div key={game._id}>
-            <h4>{game.name}</h4>
-            <img src={game.image} alt={game.name} />
-            <p>Genre: {game.genres.join(", ")}</p>
-          </div>
-        ))}
+      {displayedGames.map((game) => (
+        <div key={game.id}>
+          <h4>{game.name}</h4>
+          <img src={game.image} alt={game.name} />
+          {game.gameGenre !== null && (
+            <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
+          )}
+          <Link to={`/mygames/${game.slug}`}>
+            <button type="button">View Details</button>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };

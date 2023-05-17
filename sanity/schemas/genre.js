@@ -2,13 +2,18 @@ export default {
 
     name: 'genres',
     type: 'document',
-    title: 'Sjanger',
+    title: 'Genre',
     fields: [
-        {
-            name: 'genre_title',
+          {
+            name: 'name',
+            title: 'Name',
             type: 'string',
-            title: 'Sjangernavn',
-        },
+          },
+          {
+            name: 'slug',
+            title: 'Slug',
+            type: 'string',
+          },
         /*{
             name: 'genre_slug',
             type: 'slug',

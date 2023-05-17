@@ -14,6 +14,17 @@ export default {
       type: 'string',
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'string',
+      options: {
+        source: 'name',
+        slugify: input => input.toLowerCase()
+            .replace(/[^\w-]+/g, '-')
+            .slice(0, 150)
+    }
+    },
+    {
       name: 'platforms',
       title: 'Platforms',
       type: 'array',
@@ -34,19 +45,12 @@ export default {
       title: 'Publisher',
       type: 'string',
     },
-    /*{
-      name: 'genres',
+    {
+      name: 'gameGenre',
       title: 'Genres',
       type: 'array',
-      of: [{ type: 'genres' }],
-    },*/
-    {
-      name: 'genres',
-      title: 'Genres',
-      type: 'reference',
-      to: [{ type: 'genres' }],
+      of: [{ type: 'reference', to: [{type: 'genres'}] }],
     },
-
     {
       name: 'image',
       title: 'Image',
@@ -55,6 +59,11 @@ export default {
     {
       name: 'rating',
       title: 'Rating',
+      type: 'number',
+    },
+    {
+      name: 'hoursPlayed',
+      title: 'Hours played',
       type: 'number',
     },
     {

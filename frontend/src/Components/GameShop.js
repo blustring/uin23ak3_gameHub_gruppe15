@@ -1,4 +1,3 @@
-import GameCard from './GameCard';
 import { useState } from "react";
 
 export default function GameShop({ games }) {

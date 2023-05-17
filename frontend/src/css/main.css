@@ -3,7 +3,10 @@
   padding-left: 20px;
   margin-left: 10px;
 }
-
+img {
+  width: 100px;
+  height: 100px;
+}
 /* Style for buttons */
 button {
   background-color: #545755;

@@ -1,8 +1,8 @@
-import GameCard from "../../Components/GameCard";
+import GameCard from "./GameCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import MyGames from "./MyGames";
-//import MyFavorites from "../../Components/MyFavourites";
+import MyGames from "../lib/sanity/MyGames";
+
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
