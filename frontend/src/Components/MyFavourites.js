@@ -19,16 +19,16 @@ export default function MyFavorites() {
   };
 
   return (
-    <section class="gameshop-view">
+    <section className="gameshop-view">
       <h2>MY FAVOURITES</h2>
 
-      <div class="gameshop-grid">
+      <div className="gameshop-grid">
         {favoriteGames.map((game) => (
-          <div key={game.id} class="game-card-wrapper">
-            <div class="game-card-img">
+          <div key={game.id} className="game-card-wrapper">
+            <div className="game-card-img">
               <img src={game.background_image} alt={game.name} />
             </div>
-            <div class="game-card-details"><button onClick={() => handleRemoveFromFavorites(game.id)}>
+            <div className="game-card-details"><button onClick={() => handleRemoveFromFavorites(game.id)}>
               Remove from Favourites
             </button>
               <h2>{game.name}</h2>

@@ -56,8 +56,8 @@ export default function GamePage({ onAddFavorite }) {
         <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
         <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
         <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
-        <button class="btn-fav" onClick={handleAddToFavorite}>Add to favorites</button>
-        <button class="buy-button" onClick={handleBuyClick}>Buy</button></div>
+        <button className="btn-fav" onClick={handleAddToFavorite}>Add to favorites</button>
+        <button className="buy-button" onClick={handleBuyClick}>Buy</button></div>
 
 
 
