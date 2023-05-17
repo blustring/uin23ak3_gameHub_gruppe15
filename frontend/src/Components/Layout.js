@@ -5,15 +5,15 @@ import { Link, Outlet } from "react-router-dom";
 export default function Layout() {
     return (
         <div id="layoutContainer">
-            <div class="header-nav">
+            <div className="header-nav">
                 <header>
-                    <div class="logo-container">
+                    <div className="logo-container">
                         <Link to="/">
                             <h2>MACs Gamehub</h2>
                         </Link>
                     </div>
                 </header>
-                <nav class="nav-container">
+                <nav className="nav-container">
                     <ul>
                         <li><Link to="/gameshop">Shop</Link></li>
                         <li><Link to="/mygames">My Games</Link></li>

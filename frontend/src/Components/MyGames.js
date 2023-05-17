@@ -25,21 +25,21 @@ export default function MyGames() {
     }, [gamesByGenre]);
 
     return (
-<section class="gameshop-view">
+<section className="gameshop-view">
   <h2>MY GAMES LIBRARY</h2>
-      <div class="gameshop-grid">
+      <div className="gameshop-grid">
     {gamesByGenre.map((game, index) => (
 
       
-<div key={index} class="game-card-wrapper">
-<div class="game-card-img">
+<div key={index} className="game-card-wrapper">
+<div className="game-card-img">
   <img src={game.background_image} alt={game.name} />
 </div>
-<div class="game-card-details">
+<div className="game-card-details">
   <h2>{game.name}</h2>
   <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
-  <a href={`/game/${game.slug}`} class="link">
-    <button class="buy-button">More info</button>
+  <a href={`/game/${game.slug}`} className="link">
+    <button >More info</button>
   </a> </div> </div>
     ))}
   </div>
