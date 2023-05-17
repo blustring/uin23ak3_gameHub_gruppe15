@@ -1,13 +1,14 @@
+import React, { useState, useEffect } from 'react';
+import Login from '../lib/sanity/Login';
 import GameCard from "./GameCard";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MyGames from "../lib/sanity/MyGames";
-
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+  const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
 
   useEffect(() => {
     const favorites = Object.keys(localStorage).map((key) =>
@@ -38,6 +39,23 @@ export default function Dashboard({ games }) {
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
    
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+
+  /*const handleLogout = () => {
+    setLoggedIn(false);
+  };*/
+
+  /*if (!loggedIn) {
+    return (
+      <div>
+        <h2>Please log in</h2>
+        <Login onLogin={handleLogin} />
+      </div>
+    );
+  }*/
+
 
   return (
     <main>
@@ -72,23 +90,22 @@ export default function Dashboard({ games }) {
       </section>
 
       <section id="my-favorites">
-      <h4>My Favourites ({favoriteGamesCount} games)</h4>
-      {slicedFavoriteGames.map((game) => (
-        <div key={game.id} className="favorite-game">
-          <img src={game.background_image} alt={game.name} />
-          <div className="game-info">
-            <h3>{game.name}</h3>
-            <button onClick={() => handleRemoveFromFavorites(game.id)}>
-              Remove from Favorites
-            </button>
+        <h4>My Favorites ({favoriteGamesCount} games)</h4>
+        {slicedFavoriteGames.map((game) => (
+          <div key={game.id} className="favorite-game">
+            <img src={game.background_image} alt={game.name} />
+            <div className="game-info">
+              <h3>{game.name}</h3>
+              <button onClick={() => handleRemoveFromFavorites(game.id)}>
+                Remove from Favorites
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
-      <Link to="/myfavourites">
-          <button type="button">Go to favourites</button>
+        ))}
+        <Link to="/myfavourites">
+          <button type="button">Go to favorites</button>
         </Link>
-    </section>
-
+      </section>
     </main>
   );
 }

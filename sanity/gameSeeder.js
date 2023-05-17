@@ -18,10 +18,7 @@
 
 {"_type":"game", "slug": "", "id":"3944","name":"Half-Life 2","platforms":["PC","Xbox","PlayStation 3"],"release_date":"2004-11-16","developer":"Valve Corporation","publisher":"Valve Corporation", "image":"https://media.rawg.io/media/games/82c/82c81b6db4bfc4e5beeb4ff7a158f38f.jpg","rating":4.9,"summary":"Half-Life 2 is a first-person shooter game...","tags":["sci-fi","story-rich","single-player"],"developers":["Valve Corporation"],"releaseDate":"2004-11-16","stores":["Steam","Xbox Store","PlayStation Store"]}
 
-//update slug, hours played 'hours-played'
 
-//b4fadc9b-035f-42e7-bac8-266e21d45296
-//b4fadc9b-035f-42e7-bac8-266e21d45296
 
 
 
