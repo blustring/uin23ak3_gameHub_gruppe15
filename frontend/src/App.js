@@ -41,5 +41,6 @@ export default function App() {
         <Route path="/myfavourites" element={<MyFavourites favorites={favorites} />} />
       </Route>
     </Routes >
+    //Kilde: https://www.w3schools.com/REACT/react_router.asp
   );
 }

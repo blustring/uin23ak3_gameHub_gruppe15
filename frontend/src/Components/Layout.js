@@ -23,8 +23,6 @@ export default function Layout() {
 
             </div>
 
-
-
             <div className="main-div">
                 <main>
                     {/* Usikker på hva som er best å bruke av <Outlet/>  og <Dashboard/> her */}
@@ -42,3 +40,5 @@ export default function Layout() {
         </div>
     )
 }
+
+//Kilde: https://github.com/ackarlse/gitcollab/blob/main/src/components/Layout.js
