@@ -34,3 +34,4 @@ export default function Layout() {
         </div >
     )
 }
+//Kilde: https://github.com/ackarlse/gitcollab/blob/main/src/components/Layout.js
