@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Login from '../lib/sanity/Login';
+//import Login from '../lib/sanity/Login';
 import { Link } from "react-router-dom";
 import MyGames from "../lib/sanity/MyGames";
 
@@ -118,7 +118,7 @@ export default function Dashboard({ games }) {
               ?.sort((a, b) => new Date(b.released) - new Date(a.released))
               .slice(3, 6)
               .map((game, index) => (
-                <div key={index} class="game-card-wrapper" >
+                <div key={index} className="game-card-wrapper" >
                   <div className="game-card-img">
                     <img src={game.background_image} alt={game.name} />
                   </div>
@@ -128,7 +128,6 @@ export default function Dashboard({ games }) {
                     <a href={`/game/${game.slug}`} className="link">
                       <button >More info</button><button onClick={() => handleBuyClick(game)}>BUY</button>
                     </a>
-
                   </div>
                 </div>
               ))}
@@ -137,10 +136,7 @@ export default function Dashboard({ games }) {
 
         <section id="myGames" >
           <div id="libraryView">
-
             <MyGames games={games} displayCount={4} />
-
-
           </div>
           <Link to="/mygames">
             <button type="button">Go to library</button>
@@ -156,13 +152,10 @@ export default function Dashboard({ games }) {
                   <img src={game.background_image} alt={game.name} />
                   <button onClick={() => handleRemoveFromFavorites(game.id)}>
                     Remove from Favorites
-                  </button>    <h3>{game.name}</h3>
+                  </button>
+                  <h3>{game.name}</h3>
                 </div>
-
-
                 <div className="game-card-details">
-
-
                 </div>
               </div>
             ))}
@@ -173,7 +166,6 @@ export default function Dashboard({ games }) {
 
         </section>
       </div>
-
     </main>
   );
 }
