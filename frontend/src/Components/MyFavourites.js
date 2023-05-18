@@ -5,7 +5,7 @@ export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
 
-  //useAuthentication();
+  useAuthentication();
 
   useEffect(() => {
     // retrieve favorite games from localStorage

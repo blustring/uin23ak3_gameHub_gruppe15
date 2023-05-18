@@ -9,7 +9,7 @@ const MyGamePage = () => {
   const [game, setGame] = useState({});
   const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
 
-  //useAuthentication();
+  useAuthentication();
 
   useEffect(() => {
     async function fetchGame() {

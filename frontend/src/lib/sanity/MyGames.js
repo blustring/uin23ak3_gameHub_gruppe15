@@ -7,7 +7,7 @@ const MyGames = ({ games, displayCount }) => {
   const [fetchedGames, setFetchedGames] = useState([]);
   const [gameCount, setGameCount] = useState(0); // Add gameCount state
 
-  //useAuthentication();
+  useAuthentication();
 
 
   const isFavorit = (id) => {
@@ -16,12 +16,20 @@ const MyGames = ({ games, displayCount }) => {
     return favGame !== null;
   };
 
+  function getLoggedInUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
+
+  // 1. Få tak i innlogget user
+  const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+
   useEffect(() => {
-    async function fetchGames() {
-      // 1. Få tak i innlogget user
+    async function fetchGames(id, user) {
+      
       // 2. Hent ut ID på denne user (userId)
       // oppdater "gamesQuery" (linje 20) => `*[_type == "game"] && connectedUser == $userId{ - ish
-      const gamesQuery = `*[_type == "game"] {
+      const gamesQuery = `*[_type == "game" && connectedUser._ref == $userId]{
         id,
         slug,
         name,
@@ -40,7 +48,7 @@ const MyGames = ({ games, displayCount }) => {
       const countQuery = `count(*[_type == "game"])`; // GROQ query to count games
 
       const [fetchedGames, gameCount] = await Promise.all([
-        sanityClient.fetch(gamesQuery),
+        sanityClient.fetch(gamesQuery, { userId: user._id }),
         sanityClient.fetch(countQuery)
       ]);
 
@@ -48,7 +56,7 @@ const MyGames = ({ games, displayCount }) => {
       setGameCount(gameCount);
     }
 
-    fetchGames();
+    fetchGames(fetchGames.id, userFromLocalStorage);
   }, []);
 
   const displayedGames = fetchedGames.slice(0, displayCount);

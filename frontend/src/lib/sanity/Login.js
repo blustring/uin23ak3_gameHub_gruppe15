@@ -1,4 +1,4 @@
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 import sanityClient from './sanityClient';
 
 const Login = ({ onLogin }) => {
@@ -36,6 +36,7 @@ const Login = ({ onLogin }) => {
       console.log('Login successful');
       return true;
     }
+    
   };
 
   return (
@@ -53,4 +54,3 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
-*/

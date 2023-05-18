@@ -4,7 +4,7 @@ import useAuthentication from '../lib/sanity/userAuthentication';
 export default function GameShop({ games }) {
   const [cart, setCart] = useState([]);
 
-  //useAuthentication();
+  useAuthentication();
 
   const handleBuyClick = (game) => {
     const searchTerm = encodeURIComponent(game.name);

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-/*
+
 const useAuthentication = () => {
   useEffect(() => {
     const isLoggedIn = () => {
@@ -14,4 +14,4 @@ const useAuthentication = () => {
   }, []);
 };
 
-export default useAuthentication;*/
+export default useAuthentication;
