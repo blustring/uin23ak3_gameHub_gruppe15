@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
@@ -21,32 +20,23 @@ export default function MyFavorites() {
   };
 
   return (
-
     <section className="gameshop-view">
-
       <h2>MY FAVOURITES ({favoriteGamesCount} GAMES) </h2>
       <div className="gameshop-grid">
         {favoriteGames.map((game) => (
           <div key={game.id} className="game-card-wrapper">
             <div className="game-card-img">
               <img src={game.background_image} alt={game.name} />
-
-
             </div>
 
             <div className="game-card-details"><h2>{game.name}</h2>
               <button id="removeFav" onClick={() => handleRemoveFromFavorites(game.id)}>
                 Remove from Favorites
               </button>
-
             </div>
           </div>
         ))}
-
       </div>
-
-
     </section>
-
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Login from '../lib/sanity/Login';
-import GameCard from "./GameCard";
+
 import { Link } from "react-router-dom";
 import MyGames from "../lib/sanity/MyGames";
 
@@ -38,7 +37,7 @@ export default function Dashboard({ games }) {
     // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
-   
+
   /*const handleLogin = () => {
     setLoggedIn(true);
   };

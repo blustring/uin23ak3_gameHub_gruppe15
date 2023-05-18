@@ -26,11 +26,11 @@ const MyGamePage = () => {
 
     async function fetchGameFromApi(id) {
       fetch(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setGame(data);
-      })
-      .catch((error) => console.log(error));
+        .then((response) => response.json())
+        .then((data) => {
+          setGame(data);
+        })
+        .catch((error) => console.log(error));
     }
 
     fetchGame();
@@ -42,15 +42,14 @@ const MyGamePage = () => {
 
   return (
     <div>
-      <h2>{fetchedGame.name}</h2>
       <img src={fetchedGame.image} alt={fetchedGame.name} />
+      <h1>{fetchedGame.name}</h1>
+      <p><b>Rating: </b>{game?.rating}</p>
+      <p><b>Plot:</b> {game?.description_raw}</p>
+      <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
+      <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
+      <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
       <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
-        <h1>{game?.name}</h1>
-        <p><b>Rating: </b>{game?.rating}</p>
-        <p><b>Plot:</b> {game?.description_raw}</p>
-        <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
-        <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
-        <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
     </div>
   );
 };

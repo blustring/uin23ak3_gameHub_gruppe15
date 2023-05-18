@@ -3,24 +3,17 @@ import { useState } from "react";
 export default function GameShop({ games }) {
   const [cart, setCart] = useState([]);
 
-
   const handleBuyClick = (game) => {
     const searchTerm = encodeURIComponent(game.name);
     const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
     window.open(steamUrl, "_blank");
     setCart([...cart, game]);
   };
-
-
   console.log(games);
 
-
-
   return (
-
     <section className="gameshop-view">
       <h2>GAMESHOP</h2>
-
       <div className="gameshop-grid">
         {games
           ?.sort((a, b) => new Date(b.released) - new Date(a.released))
@@ -36,14 +29,11 @@ export default function GameShop({ games }) {
                 <a href={`/game/${game.slug}`} className="link">
                   <button >More info</button><button onClick={() => handleBuyClick(game)}>BUY</button>
                 </a>
-
               </div>
             </div>
           ))}
       </div>
     </section>
-
-
 
   )
 }
