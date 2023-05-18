@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
-
+  const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
   useEffect(() => {
     // retrieve favorite games from localStorage
     const favorites = Object.keys(localStorage).map((key) =>
       JSON.parse(localStorage.getItem(key))
     );
     setFavoriteGames(favorites);
+    setFavoriteGamesCount(favorites.length);
   }, []);
 
   const handleRemoveFromFavorites = (id) => {
@@ -19,19 +21,32 @@ export default function MyFavorites() {
   };
 
   return (
-    <div className="favorites-container">
-      <h4>My Favourites </h4>
-      {favoriteGames.map((game) => (
-        <div key={game.id} className="favorite-game">
-          <img src={game.background_image} alt={game.name} />
-          <div className="game-info">
-            <h3>{game.name}</h3>
-            <button onClick={() => handleRemoveFromFavorites(game.id)}>
-              Remove from Favorites
-            </button>
+
+    <section className="gameshop-view">
+
+      <h2>MY FAVOURITES ({favoriteGamesCount} GAMES) </h2>
+      <div className="gameshop-grid">
+        {favoriteGames.map((game) => (
+          <div key={game.id} className="game-card-wrapper">
+            <div className="game-card-img">
+              <img src={game.background_image} alt={game.name} />
+
+
+            </div>
+
+            <div className="game-card-details"><h2>{game.name}</h2>
+              <button id="removeFav" onClick={() => handleRemoveFromFavorites(game.id)}>
+                Remove from Favorites
+              </button>
+
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+
+      </div>
+
+
+    </section>
+
   );
 }

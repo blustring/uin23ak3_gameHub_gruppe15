@@ -41,21 +41,39 @@ const MyGames = ({ games, displayCount }) => {
   const displayedGames = fetchedGames.slice(0, displayCount);
 
   return (
-    <div>
-      <h4>My Games-Library ({gameCount} games)</h4>
-      {displayedGames.map((game) => (
-        <div key={game.id}>
-          <h4>{game.name}</h4>
-          <img src={game.image} alt={game.name} />
-          {game.gameGenre !== null && (
-            <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
-          )}
-          <Link to={`/mygames/${game.slug}`}>
-            <button type="button">View Details</button>
-          </Link>
-        </div>
-      ))}
-    </div>
+
+    <section className="gameshop-view">
+      <h2>MY GAMES-LIBRARY ({gameCount} games)</h2>
+      <div className="gameshop-grid">
+        {displayedGames.map((game) => (
+          <div key={game.id} className="game-card-wrapper">
+            <div className="game-card-img">
+              <img src={game.image} alt={game.name} />
+            </div>
+            <div className="game-card-details">
+              <h2>{game.name}</h2>
+              {game.gameGenre !== null && (
+                <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
+              )}<a href={`/mygame/${game.slug}`} className="link">
+                <button >View Details</button></a>
+            </div>
+          </div>
+
+
+
+
+        ))}
+
+      </div>
+
+    </section>
+
+
+
+
+
+
+
   );
 };
 

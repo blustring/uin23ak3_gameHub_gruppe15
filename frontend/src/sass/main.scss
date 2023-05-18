@@ -30,9 +30,17 @@ $footer-font-size: 1rem;
   }
 }
 
+#removeFav {
+
+  width: fit-content;
+
+}
+
+
 .vl {
   border-left: 6px solid rgb(204, 7, 7);
   padding-left: 20px;
+  margin-left: 10px;
   margin-left: 10px;
 }
 
@@ -48,6 +56,7 @@ button {
   padding: $game-page-padding;
   margin-left: 10px;
   gap: $game-page-gap;
+
 
 }
 
@@ -92,6 +101,31 @@ button {
 
 
 
+#gamePageAlone {
+  grid-template-columns: 1fr;
+  padding: 20px;
+  margin-left: 0;
+}
+
+#imgGamePage {
+  grid-column: auto;
+}
+
+#detailsGamePage {
+  grid-column: auto;
+}
+}
+
+@media (max-width: 480px) {
+  #gamePageAlone {
+    padding: 10px;
+  }
+}
+
+
+
+
+
 /*----------------Layout---------------*/
 #layoutContainer {
 
@@ -115,28 +149,58 @@ button {
   color: $secondary-color;
   padding: $header-padding;
 
+
   .logo-container h2 {
     font-size: 2rem;
     margin: 0;
     padding-bottom: 5px;
   }
 
-  .nav-container ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
+  font-size: 2rem;
+  margin: 0;
+  padding-bottom: 5px;
+}
 
-  .nav-container li {
-    margin-right: 20px;
-  }
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
 
-  .nav-container li:last-child {
-    margin-right: 0;
-  }
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container li {
+  margin-right: 20px;
+}
+
+.nav-container li {
+  margin-right: 20px;
+}
+
+.nav-container li:last-child {
+  margin-right: 0;
+}
+
+.nav-container li:last-child {
+  margin-right: 0;
+}
+
+.nav-container a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px;
+  transition: all 0.3s ease;
 
   .nav-container a {
     color: #333;
@@ -151,6 +215,13 @@ button {
       border-radius: 5px;
     }
   }
+
+  &:hover {
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+  }
+}
 }
 
 
@@ -187,6 +258,73 @@ button {
 /*---------------gridit---------------------*/
 .gridt {
   display: flex;
+}
+
+#linkdiv {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+/*----------------Gamecard page----------------*/
+.game-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  align-items: center;
+}
+
+.left img {
+  width: 100%;
+  height: auto;
+}
+
+.right {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+
+.right>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h4 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.right p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.right button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+}
+
+/*----------------GameShop page----------------*/
+.gameshop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+display: flex;
 }
 
 #linkdiv {
@@ -295,9 +433,14 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
-  margin: 10px;
+  margin-left: 2rem;
   width: 100%;
 
+
+}
+
+#dashboardBorder {
+  border-style: solid;
 
 }
 
@@ -309,17 +452,22 @@ button {
 
 }
 
+}
+
 #gameshop {
+
   grid-column-start: span 3;
 }
 
 
 #myGames {
+
   grid-row: 2 / span 2;
   grid-column: 1 / span 2;
 }
 
 #myFavourites {
+
   grid-row: 2 / span 3;
   grid-column: 3 / span 3;
 
@@ -328,38 +476,49 @@ button {
 
 #libraryView {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
-  padding: 0;
-  margin: 0;
+
+  .gameshop-view .gameshop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    #libraryView {
+      grid-template-columns: 1fr;
+    }
+
+    .gameshop-view .gameshop-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+
+
+    #libraryView {
+      grid-template-columns: 1fr;
+    }
+
+    .gameshop-view .gameshop-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+  }
 }
 
-
-/* Media queries for responsiveness */
-@media screen and (max-width: 768px) {
-  #dashboardContainer {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  #myGames {
-    grid-row: 3 / span 2;
-    grid-column: 1;
-  }
-
-  #myFavourites {
-    grid-row: 6 / span 2;
-    grid-column: 1;
-  }
-}
-
-@media screen and (max-width: 480px) {
-
-
-  #libraryView {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 
@@ -410,7 +569,8 @@ button {
     flex-direction: column;
   }
 
-  .game-card-img#libraryView,
+  .game-card-img,
+  #libraryView,
   #myFavourites {
     height: auto;
   }

@@ -16,6 +16,10 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/client": "^6.1.1",
+    "@sanity/icons": "^2.1.0",
+    "@sanity/ui": "^1.2.0",
+    "@sanity/vision": "^3.0.0",
     "@sanity/client": "^6.1.0",
     "@sanity/vision": "^3.10.0",
     "axios": "^1.4.0",
