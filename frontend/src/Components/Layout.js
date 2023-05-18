@@ -16,9 +16,10 @@ export default function Layout() {
                         <li><Link to="/gameshop">Shop</Link></li>
                         <li><Link to="/mygames">My Games</Link></li>
                         <li><Link to="/myfavourites">Favourites</Link></li>
+                        <li><Link to="/gameshop" onClick={() => localStorage.removeItem('user')}>Logout</Link></li>
+
                     </ul>
                 </nav>
-
             </div>
 
             <div className="main-div">
@@ -32,9 +33,6 @@ export default function Layout() {
                     <p>Copyright © 2023</p> <p>The data used is from the API:<a href="https://rawg.io/"> https://rawg.io/ </a> </p>
                 </footer>
             </div>
-
-        </div>
+        </div >
     )
 }
-
-//Kilde: https://github.com/ackarlse/gitcollab/blob/main/src/components/Layout.js

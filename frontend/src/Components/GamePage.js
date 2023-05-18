@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function GamePage({ onAddFavorite }) {
   const { slug } = useParams();
   const [game, setGame] = useState({});
   const [games, setGames] = useState([]);
+
+  //useAuthentication();
 
   const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
 
@@ -41,25 +44,22 @@ export default function GamePage({ onAddFavorite }) {
     window.open(steamUrl, "_blank");
   };
 
-
   return (
     <section id="gamePageAlone">
       <div id="imgGamePage">
         <img src={game?.background_image} alt={game?.name} />
       </div>
-
       <div id="detailsGamePage">
         <h1>{game?.name}</h1>
         <p><b>Rating: </b>{game?.rating}</p>
         <p><b>Plot:</b> {game?.description_raw}</p>
-        <p><b>Published:</b> {game?.released}</p>
         <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
         <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
         <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
         <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
-        <button onClick={handleAddToFavorite}>Add to favorites</button>
-        <button onClick={handleBuyClick}>Buy</button></div>
+        <button className="btn-fav" onClick={handleAddToFavorite}>Add to favorites</button>
+        <button className="buy-button" onClick={handleBuyClick}>Buy</button>
+      </div>
     </section>
-
   );
 }

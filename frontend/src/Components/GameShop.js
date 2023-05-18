@@ -1,7 +1,10 @@
 import { useState } from "react";
+import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function GameShop({ games }) {
   const [cart, setCart] = useState([]);
+
+  //useAuthentication();
 
   const handleBuyClick = (game) => {
     const searchTerm = encodeURIComponent(game.name);
@@ -9,14 +12,11 @@ export default function GameShop({ games }) {
     window.open(steamUrl, "_blank");
     setCart([...cart, game]);
   };
-
   console.log(games);
 
   return (
-
     <section className="gameshop-view">
       <h2>GAMESHOP</h2>
-
       <div className="gameshop-grid">
         {games
           ?.sort((a, b) => new Date(b.released) - new Date(a.released))
@@ -32,7 +32,6 @@ export default function GameShop({ games }) {
                 <a href={`/game/${game.slug}`} className="link">
                   <button >More info</button><button onClick={() => handleBuyClick(game)}>BUY</button>
                 </a>
-
               </div>
             </div>
           ))}
