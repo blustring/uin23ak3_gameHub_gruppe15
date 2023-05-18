@@ -63,8 +63,9 @@ const MyGames = ({ games, displayCount }) => {
               <h2>{game.name}</h2>
               {game.gameGenre !== null && (
                 <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
-              )}<a href={`/mygame/${game.slug}`} className="link">
-                <button >View Details</button></a>
+              )}<Link to={`/mygames/${game.slug}`}>
+                  <button type="button">View Details</button>
+                </Link>
             </div>
           </div>
 

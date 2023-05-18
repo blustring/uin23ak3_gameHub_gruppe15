@@ -49,9 +49,6 @@ export default function GamePage({ onAddFavorite }) {
         <img src={game?.background_image} alt={game?.name} />
       </div>
 
-      <div id="detailsGamePage">
-        <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
-
         <div id="detailsGamePage">
           <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
           <h1>{game?.name}</h1>
@@ -63,9 +60,6 @@ export default function GamePage({ onAddFavorite }) {
           <button className="btn-fav" onClick={handleAddToFavorite}>Add to favorites</button>
           <button className="buy-button" onClick={handleBuyClick}>Buy</button>
         </div>
-
-      </div>
-
 
     </section>
 
