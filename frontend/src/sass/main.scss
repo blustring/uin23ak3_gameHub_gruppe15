@@ -250,19 +250,15 @@ button {
   margin-left: 2rem;
   width: 100%;
 }
-
 #dashboardBorder {
   border-style: solid;
   border-width: 5px;
   padding: 1rem;
   background-color: gray;
 }
-
 #gameshop {
-
   grid-column-start: span 3;
 }
-
 #myGames {
   grid-row: 2 / span 2;
   grid-column: 1 / span 2;
@@ -271,7 +267,6 @@ button {
   grid-row: 2 / span 3;
   grid-column: 3 / span 3;
 }
-
 #libraryView {
   display: grid;
   grid-template-columns: 1fr;
@@ -284,8 +279,11 @@ button {
     padding: 0;
     margin: 0;
   }
-
-  @media (max-width: 768px) {
+ /*----- commented this out 
+ 
+ 
+ 
+ @media (max-width: 768px) {
     #libraryView {
       grid-template-columns: 1fr;
     }
@@ -298,7 +296,7 @@ button {
       margin: 0;
     }
   }
-
+ */ 
   @media screen and (max-width: 480px) {
     #libraryView {
       grid-template-columns: 1fr;
@@ -342,26 +340,14 @@ button {
 
 /* ------------Media Queries   .gameshop-grid--------------  */
 @media (max-width: 768px) {
-
   /* Styles for screens up to 768px */
-  .gameshop-grid,
-  #libraryView,
-  #myFavourites {
+  .gameshop-grid{
     grid-template-columns: repeat(1, 1fr);
   }
-  .game-card-wrapper,
-  #myFavourites {
+  .game-card-wrapper{
     flex-direction: column;
   }
-  .game-card-img,
-  #libraryView,
-  #myFavourites {
-    height: auto;
-  }
-
-  .game-card-details,
-  #libraryView,
-  #myFavourites {
+  .game-card-details{
     padding: 10px 0;
   }}
   @media (min-width: 769px) and (max-width: 1024px) {
@@ -378,16 +364,25 @@ button {
   }
 
 /* ------------Media Queries Dashboard--------------  */
-@media (min-width: 908) {
+@media (max-width: 746px) {
   #dashboardContainer{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
+    #gameshop{
+      grid-column-start: span 3;
+    }
+    #myGames{
+      grid-row-start: 2 ;
+      grid-column: 1 / span 3;
+      
+    }
+    #my-favorites{
+      grid-row-start: 3 ;
+      grid-column: 1 / span 3;
+    }
 
   }
   }
-  @media (min-width: 769px) and (max-width: 1024px) {
-   
-  }
-  @media (min-width: 1025px) {
-    
-  }
+
   

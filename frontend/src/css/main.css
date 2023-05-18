@@ -255,6 +255,24 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  /*----- commented this out 
+
+
+
+  @media (max-width: 768px) {
+     #libraryView {
+       grid-template-columns: 1fr;
+     }
+
+     .gameshop-view .gameshop-grid {
+       display: grid;
+       grid-template-columns: 1fr;
+       gap: 20px;
+       padding: 0;
+       margin: 0;
+     }
+   }
+  */
 }
 #libraryView .gameshop-view .gameshop-grid {
   display: grid;
@@ -262,18 +280,6 @@ button:hover {
   gap: 20px;
   padding: 0;
   margin: 0;
-}
-@media (max-width: 768px) {
-  #libraryView #libraryView {
-    grid-template-columns: 1fr;
-  }
-  #libraryView .gameshop-view .gameshop-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-  }
 }
 @media screen and (max-width: 480px) {
   #libraryView #libraryView {
@@ -311,23 +317,13 @@ button:hover {
 /* ------------Media Queries   .gameshop-grid--------------  */
 @media (max-width: 768px) {
   /* Styles for screens up to 768px */
-  .gameshop-grid,
-  #libraryView,
-  #myFavourites {
+  .gameshop-grid {
     grid-template-columns: repeat(1, 1fr);
   }
-  .game-card-wrapper,
-  #myFavourites {
+  .game-card-wrapper {
     flex-direction: column;
   }
-  .game-card-img,
-  #libraryView,
-  #myFavourites {
-    height: auto;
-  }
-  .game-card-details,
-  #libraryView,
-  #myFavourites {
+  .game-card-details {
     padding: 10px 0;
   }
 }
@@ -344,9 +340,21 @@ button:hover {
   }
 }
 /* ------------Media Queries Dashboard--------------  */
-@media (min-width: 908) {
+@media (max-width: 746px) {
   #dashboardContainer {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  #dashboardContainer #gameshop {
+    grid-column-start: span 3;
+  }
+  #dashboardContainer #myGames {
+    grid-row-start: 2;
+    grid-column: 1/span 3;
+  }
+  #dashboardContainer #my-favorites {
+    grid-row-start: 3;
+    grid-column: 1/span 3;
   }
 }
 
