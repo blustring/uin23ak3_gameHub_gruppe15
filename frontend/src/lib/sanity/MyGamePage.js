@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import sanityClient from './sanityClient';
-import useAuthentication from './userAuthentication';
+
 
 const MyGamePage = () => {
   const [fetchedGame, setFetchedGame] = useState(null);
   const { slug } = useParams();
   const [game, setGame] = useState({});
   const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
-
-  //useAuthentication();
 
   useEffect(() => {
     async function fetchGame() {

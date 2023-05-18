@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function GameShop({ games }) {
   const [cart, setCart] = useState([]);

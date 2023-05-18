@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { Link } from "react-router-dom";
 import MyGames from "../lib/sanity/MyGames";
 
@@ -7,9 +6,6 @@ export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
-  const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
-
-  
 
   useEffect(() => {
     const favorites = Object.keys(localStorage).map((key) =>
