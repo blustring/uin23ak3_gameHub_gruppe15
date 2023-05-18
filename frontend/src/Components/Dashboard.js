@@ -1,11 +1,9 @@
-import GameCard from "./GameCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
   useEffect(() => {
-    // retrieve favorite games from localStorage
     const favorites = Object.keys(localStorage).map((key) =>
       JSON.parse(localStorage.getItem(key))
     );
@@ -19,9 +17,7 @@ export default function Dashboard({ games }) {
   };
 
   const handleRemoveFromFavorites = (id) => {
-    // remove game from localStorage
     localStorage.removeItem(id);
-    // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
 
@@ -30,10 +26,7 @@ export default function Dashboard({ games }) {
     <div id="dashboardContainer">
       <section id="gameshop">
         <div className="gridt">
-
           <h2>GAMESHOP</h2>
-
-
           <div id="linkdiv" >
             <Link to="/gameshop" >
               <button type="submit">Visit shop</button>
@@ -53,9 +46,8 @@ export default function Dashboard({ games }) {
                   <h2>{game.name}</h2>
                   <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
                   <a href={`/game/${game.slug}`} className="link">
-                    <button >More info</button><button  onClick={() => handleBuyClick(game)}>BUY</button>
+                    <button >More info</button><button onClick={() => handleBuyClick(game)}>BUY</button>
                   </a>
-
                 </div>
               </div>
             ))}
@@ -91,8 +83,6 @@ export default function Dashboard({ games }) {
         </div>
       </section>
 
-
-
       <section id="myFavourites">
         <div className="vl">
           <h2>MY FAVOURITES</h2>
@@ -110,13 +100,7 @@ export default function Dashboard({ games }) {
             <button type="button">Go to favourites</button>
           </Link>
         </div>
-
       </section>
-
-
     </div>
-
-
-
   )
 }
