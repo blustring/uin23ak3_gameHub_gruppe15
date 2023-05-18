@@ -10,19 +10,12 @@ export default function Dashboard({ games }) {
   const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
 
   useEffect(() => {
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
+    const favorites = Object.keys(localStorage)
+      .filter((key) => key !== "user")
+      .map((key) => JSON.parse(localStorage.getItem(key)));
+      
     setFavoriteGames(favorites);
     setFavoriteGamesCount(favorites.length);
-  }, []);
-
-  useEffect(() => {
-    // retrieve favorite games from localStorage
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
-    setFavoriteGames(favorites);
   }, []);
 
   const handleBuyClick = (game) => {

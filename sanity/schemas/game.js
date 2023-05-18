@@ -96,9 +96,9 @@ export default {
     },
     {
       name: 'connectedUser',
-      title: 'User',
-      type: 'reference',
-      to: [{type: 'user'}],
+      title: 'Users',
+      type: 'array',
+      of: [{ type: 'reference', to: [{type: 'user'}] }],
     },
   ],
 };

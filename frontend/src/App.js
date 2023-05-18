@@ -36,9 +36,9 @@ export default function App() {
     <Routes>
       <Route element={<Layout onAddFavorite={handleAddFavorite} />}>
         <Route index element={<Dashboard games={games} getGames={getGames} />} />
-        <Route path='/game/:slug' element={<GamePage games={games} onAddFavorite={setFavorites} />} />
+        <Route path='/game/:slug' element={<GamePage onAddFavorite={setFavorites} />} />
         <Route path="/gameshop" element={<GameShop games={games} getGames={getGames} />} />
-        <Route path="/mygames" element={<MyGames games={games} getGames={getGames} />} />
+        <Route path="/mygames" element={<MyGames />} />
         <Route path="/mygames/:slug" element={<MyGamePage />} />
         <Route path="/myfavourites" element={<MyFavourites favorites={favorites} />} />
       </Route>

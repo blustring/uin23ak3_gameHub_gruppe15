@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import sanityClient from '../lib/sanity/sanityClient';
 import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function GamePage({ onAddFavorite }) {
   const { slug } = useParams();
   const [game, setGame] = useState({});
-  const [games, setGames] = useState([]);
 
   useAuthentication();
 
@@ -20,15 +20,6 @@ export default function GamePage({ onAddFavorite }) {
       .catch((error) => console.log(error));
   }, [slug]);
 
-  useEffect(() => {
-    fetch(`https://api.rawg.io/api/games?search=${game?.name}&key=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setGames(data.results);
-      })
-      .catch((error) => console.log(error));
-  }, [game]);
-
   const handleAddToFavorite = () => {
     onAddFavorite({
       id: game.id,
@@ -36,10 +27,43 @@ export default function GamePage({ onAddFavorite }) {
       background_image: game.background_image,
     });
     localStorage.setItem(game.id, JSON.stringify(game));
+
+    updateFavorits();
   };
 
+  async function updateFavorits() {
+    const transaction = sanityClient.transaction();
+    
+    try {
+      //finn user id
+      const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+      const currentUser = await sanityClient.getDocument(userFromLocalStorage._id);
+
+      let oldFavorits = currentUser.favorits ?? [];
+      if (oldFavorits.includes(game.id)) {
+        // Since there is no change, dont go further and update sanity
+        return;
+      }
+
+      oldFavorits.push(game.id);
+  
+      const updatedUser = {
+        ...currentUser,
+        favorits: oldFavorits,
+      };
+  
+      // oppdater user med ny idListe
+      await transaction.createOrReplace(updatedUser).commit();
+      
+      console.log('User updated successfully.');
+    } catch (error) {
+      console.error('Error updating:', error);
+    }
+  }
+
   const handleBuyClick = () => {
-    const searchTerm = encodeURIComponent(game?.name);
+    
+  const searchTerm = encodeURIComponent(game?.name);
     const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
     window.open(steamUrl, "_blank");
   };

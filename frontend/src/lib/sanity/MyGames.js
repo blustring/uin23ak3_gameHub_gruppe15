@@ -9,27 +9,19 @@ const MyGames = ({ games, displayCount }) => {
 
   useAuthentication();
 
-
   const isFavorit = (id) => {
     const favGame = localStorage.getItem(id);
 
     return favGame !== null;
   };
 
-  function getLoggedInUser() {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
-  }
-
   // 1. Få tak i innlogget user
   const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     async function fetchGames(id, user) {
-      
       // 2. Hent ut ID på denne user (userId)
-      // oppdater "gamesQuery" (linje 20) => `*[_type == "game"] && connectedUser == $userId{ - ish
-      const gamesQuery = `*[_type == "game" && connectedUser._ref == $userId]{
+      const gamesQuery = `*[_type == "game" && $userId in connectedUser[]._ref]{
         id,
         slug,
         name,
@@ -37,6 +29,7 @@ const MyGames = ({ games, displayCount }) => {
         developer,
         publisher,
         gameGenre[]->,
+        hoursPlayed,
         image,
         rating,
         summary,
@@ -45,11 +38,11 @@ const MyGames = ({ games, displayCount }) => {
         releaseDate,
         stores
       }`;
-      const countQuery = `count(*[_type == "game"])`; // GROQ query to count games
+      const countQuery = `count(*[_type == "game" && $userId in connectedUser[]._ref])`; // GROQ query to count games
 
       const [fetchedGames, gameCount] = await Promise.all([
         sanityClient.fetch(gamesQuery, { userId: user._id }),
-        sanityClient.fetch(countQuery)
+        sanityClient.fetch(countQuery, { userId: user._id })
       ]);
 
       setFetchedGames(fetchedGames);
@@ -72,11 +65,14 @@ const MyGames = ({ games, displayCount }) => {
             </div>
             <div className="game-card-details">
               <h2>{game.name}</h2>
+              <p>Hours played:{game.hoursPlayed}</p>
               {game.gameGenre !== null && (
                 <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
+                
               )}<Link to={`/mygames/${game.slug}`}>
                 <button type="button">View Details</button>
               </Link>
+              
             </div>
           </div>
         ))}

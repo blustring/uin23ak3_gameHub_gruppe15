@@ -4,14 +4,21 @@ import useAuthentication from '../lib/sanity/userAuthentication';
 export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+  // const [user,setuser]
 
   useAuthentication();
 
   useEffect(() => {
     // retrieve favorite games from localStorage
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
+    const favorites = Object.keys(localStorage)
+      .filter((key) => key !== "user")
+      .map((key) => JSON.parse(localStorage.getItem(key)));
+    
+    //const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+    //user = await sanityClient.getDocument(userFromLocalStorage._id);
+
+    //favorites =  fetch from santiy all games with "id" from user.favorits[]
+
     setFavoriteGames(favorites);
     setFavoriteGamesCount(favorites.length);
   }, []);
@@ -21,6 +28,8 @@ export default function MyFavorites() {
     localStorage.removeItem(id);
     // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
+
+    // copy logic to add fav to user field, edit to remove from list
   };
 
   return (

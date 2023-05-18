@@ -20,20 +20,17 @@ const Login = ({ onLogin }) => {
   const login = async (email) => {
     // Retrieve the user data from Sanity based on the provided email
     const query = `*[_type == "user" && email == $email]`;
-    const params = { email };
-    const result = await sanityClient.fetch(query, params);
+    const result = await sanityClient.fetch(query, { email });
 
     if (result.length === 0) {
       // User not found
-      console.log('User not found');
       return false;
     } else {
       const user = result[0];
       // Store the user data in localStorage
       localStorage.setItem('user', JSON.stringify(user));
 
-      // Simulate successful login for demonstration purposes
-      console.log('Login successful');
+      // Successful login
       return true;
     }
     

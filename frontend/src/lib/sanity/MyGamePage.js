@@ -26,6 +26,8 @@ const MyGamePage = () => {
       ]);
 
       setFetchedGame(fetchedGame);
+      
+      // Supplement game-data from API
       fetchGameFromApi(fetchedGame.id);
     }
 
