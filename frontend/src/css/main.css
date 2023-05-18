@@ -120,9 +120,10 @@ button:hover {
   padding: 10px;
   margin: 0;
   padding-bottom: 5px;
+  font-size: 20px;
 }
 .header-nav .logo-container h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
   padding-bottom: 5px;
 }
@@ -159,7 +160,8 @@ button:hover {
 
 /* -------Style the main content------- */
 .main-div {
-  margin: 0 auto;
+  grid-area: main;
+  margin: auto auto;
   padding: 20px;
 }
 
@@ -224,17 +226,15 @@ button:hover {
 /*----------------Dashboard design-----------------*/
 #dashboardContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto auto auto;
   padding: 10px;
-  margin-left: 2rem;
-  width: 100%;
 }
 
 #dashboardBorder {
   border-style: solid;
   border-width: 5px;
   padding: 1rem;
-  background-color: gray;
+  background-color: #a0c8d3;
 }
 
 #gameshop {
@@ -242,12 +242,12 @@ button:hover {
 }
 
 #myGames {
-  grid-row: 2/span 2;
+  grid-row: 2;
   grid-column: 1/span 2;
 }
 
 #myFavourites {
-  grid-row: 2/span 3;
+  grid-row: 2;
   grid-column: 3/span 3;
 }
 
@@ -255,33 +255,15 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  /*----- commented this out 
-
-
-
-  @media (max-width: 768px) {
-     #libraryView {
-       grid-template-columns: 1fr;
-     }
-
-     .gameshop-view .gameshop-grid {
-       display: grid;
-       grid-template-columns: 1fr;
-       gap: 20px;
-       padding: 0;
-       margin: 0;
-     }
-   }
-  */
 }
-#libraryView .gameshop-view .gameshop-grid {
+#libraryView .gameshop-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 0;
   margin: 0;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 780px) {
   #libraryView #libraryView {
     grid-template-columns: 1fr;
   }
@@ -316,7 +298,6 @@ button:hover {
 }
 /* ------------Media Queries   .gameshop-grid--------------  */
 @media (max-width: 768px) {
-  /* Styles for screens up to 768px */
   .gameshop-grid {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -328,13 +309,11 @@ button:hover {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* Styles for screens between 769px and 1024px */
   .gameshop-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 1025px) {
-  /* Styles for screens larger than 1024px */
   .gameshop-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -343,17 +322,21 @@ button:hover {
 @media (max-width: 746px) {
   #dashboardContainer {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    margin: auto;
+    justify-content: end;
   }
   #dashboardContainer #gameshop {
     grid-column-start: span 3;
   }
   #dashboardContainer #myGames {
     grid-row-start: 2;
+    grid-row-end: 2;
     grid-column: 1/span 3;
   }
   #dashboardContainer #my-favorites {
     grid-row-start: 3;
+    grid-row-end: 3;
     grid-column: 1/span 3;
   }
 }
