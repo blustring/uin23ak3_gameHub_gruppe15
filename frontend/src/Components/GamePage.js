@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function GamePage({ onAddFavorite }) {
   const { slug } = useParams();
   const [game, setGame] = useState({});
   const [games, setGames] = useState([]);
+
+  //useAuthentication();
 
   const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
 

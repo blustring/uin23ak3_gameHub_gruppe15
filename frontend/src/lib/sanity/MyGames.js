@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import sanityClient from './sanityClient';
+import useAuthentication from './userAuthentication';
 
 const MyGames = ({ games, displayCount }) => {
   const [fetchedGames, setFetchedGames] = useState([]);
   const [gameCount, setGameCount] = useState(0); // Add gameCount state
+
+  //useAuthentication();
+
 
   const isFavorit = (id) => {
     const favGame = localStorage.getItem(id);

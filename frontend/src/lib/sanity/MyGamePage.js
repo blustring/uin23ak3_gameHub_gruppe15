@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import sanityClient from './sanityClient';
+import useAuthentication from './userAuthentication';
 
 const MyGamePage = () => {
   const [fetchedGame, setFetchedGame] = useState(null);
@@ -8,12 +9,16 @@ const MyGamePage = () => {
   const [game, setGame] = useState({});
   const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
 
+  //useAuthentication();
+
   useEffect(() => {
     async function fetchGame() {
       const gameQuery = `*[_type == "game" && slug == $slug] {
         id,
         name,
-        image
+        image,
+        releaseDate,
+        developer,
       }[0]`;
 
       const [fetchedGame] = await Promise.all([
@@ -44,13 +49,15 @@ const MyGamePage = () => {
     <div>
       <h2>{fetchedGame.name}</h2>
       <img src={fetchedGame.image} alt={fetchedGame.name} />
-      <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
-        <h1>{game?.name}</h1>
         <p><b>Rating: </b>{game?.rating}</p>
         <p><b>Plot:</b> {game?.description_raw}</p>
+        <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
         <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
+        <p><b>Developer:</b> {fetchedGame.developer}</p>
         <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
+        <p><b>Release date:</b> {game?.released}</p>
         <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
+        <p><b>Stores:</b> {game?.stores?.map((store) => store.store.name).join(", ")}</p>
     </div>
   );
 };

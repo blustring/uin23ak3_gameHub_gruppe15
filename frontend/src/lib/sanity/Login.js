@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 import sanityClient from './sanityClient';
 
 const Login = ({ onLogin }) => {
@@ -29,8 +29,8 @@ const Login = ({ onLogin }) => {
       return false;
     } else {
       const user = result[0];
-      // Lagre til localStorage (user)
-      // Husk lagre det som (key => value), hvor key er "user"
+      // Store the user data in localStorage
+      localStorage.setItem('user', JSON.stringify(user));
 
       // Simulate successful login for demonstration purposes
       console.log('Login successful');
@@ -53,3 +53,4 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
+*/

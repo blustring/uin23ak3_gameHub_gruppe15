@@ -1,5 +1,5 @@
-
 export default function GameCard({ title, img, genre, slug }) {
+
   return (
     <article className="game-card">
       <div className="left">

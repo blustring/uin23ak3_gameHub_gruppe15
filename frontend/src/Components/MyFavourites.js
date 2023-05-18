@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-
+import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+
+  //useAuthentication();
+
   useEffect(() => {
     // retrieve favorite games from localStorage
     const favorites = Object.keys(localStorage).map((key) =>

@@ -10,6 +10,8 @@ export default function Dashboard({ games }) {
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
 
+  
+
   useEffect(() => {
     const favorites = Object.keys(localStorage).map((key) =>
       JSON.parse(localStorage.getItem(key))
@@ -38,29 +40,6 @@ export default function Dashboard({ games }) {
     // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
-   
-  /*const handleLogin = () => {
-    setLoggedIn(true);
-  };
-
-  //login email: mejohan@hiof.no  
-  const handleLogout = () => {
-    setLoggedIn(false);
-  };
-
-  const isLoggedin = () => {
-    // Sjekke om det finnes en user i localStorage
-    return false;
-  }
-
-  if (!isLoggedin()) {
-    return (
-      <div>
-        <h2>Please log in</h2>
-        <Login onLogin={handleLogin} />
-      </div>
-    );
-  }*/
 
 
   return (
