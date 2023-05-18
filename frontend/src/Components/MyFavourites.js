@@ -4,7 +4,7 @@ export default function MyFavorites() {
   const [favoriteGames, setFavoriteGames] = useState([]);
 
   useEffect(() => {
-    // retrieve favorite games from localStorage
+
     const favorites = Object.keys(localStorage).map((key) =>
       JSON.parse(localStorage.getItem(key))
     );
@@ -12,9 +12,7 @@ export default function MyFavorites() {
   }, []);
 
   const handleRemoveFromFavorites = (id) => {
-    // remove game from localStorage
     localStorage.removeItem(id);
-    // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
 

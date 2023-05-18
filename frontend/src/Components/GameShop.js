@@ -1,4 +1,3 @@
-import GameCard from './GameCard';
 import { useState } from "react";
 
 export default function GameShop({ games }) {
@@ -31,7 +30,7 @@ export default function GameShop({ games }) {
                 <h2>{game.name}</h2>
                 <p>{game.genres.map((genreList) => genreList.name).join(", ")}</p>
                 <a href={`/game/${game.slug}`} className="link">
-                  <button className="buy-button">More info</button><button className="buy-button" onClick={() => handleBuyClick(game)}>BUY</button>
+                  <button >More info</button><button onClick={() => handleBuyClick(game)}>BUY</button>
                 </a>
 
               </div>
@@ -39,8 +38,6 @@ export default function GameShop({ games }) {
           ))}
       </div>
     </section>
-
-
 
   )
 }

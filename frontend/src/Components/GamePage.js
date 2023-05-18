@@ -49,22 +49,17 @@ export default function GamePage({ onAddFavorite }) {
       </div>
 
       <div id="detailsGamePage">
-        <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
         <h1>{game?.name}</h1>
         <p><b>Rating: </b>{game?.rating}</p>
         <p><b>Plot:</b> {game?.description_raw}</p>
+        <p><b>Published:</b> {game?.released}</p>
         <p><b>Genre:</b> {game?.genres?.map((genreList) => genreList.name).join(", ")}</p>
         <p><b>Publisher:</b> {game?.publishers?.map((publisher) => publisher.name).join(", ")}</p>
         <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
-        <button className="btn-fav" onClick={handleAddToFavorite}>Add to favorites</button>
-        <button className="buy-button" onClick={handleBuyClick}>Buy</button></div>
-
-
-
+        <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
+        <button onClick={handleAddToFavorite}>Add to favorites</button>
+        <button onClick={handleBuyClick}>Buy</button></div>
     </section>
-
-
-
 
   );
 }
