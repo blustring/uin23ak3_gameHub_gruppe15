@@ -40,9 +40,8 @@ export default function Layout() {
                 <footer>
                     <p>Copyright © 2023</p> <p>The data used is from the API:<a href="https://rawg.io/"> https://rawg.io/ </a> </p>
                 </footer>
-                <p>Copyright © 2023</p> <p>The data used is from the API:<a href="https://rawg.io/"> https://rawg.io/ </a> </p>
-            </footer>
-        </div>
+
+            </div>
 
 
         </div >

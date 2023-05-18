@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function GameShop({ games }) {
   const [cart, setCart] = useState([]);
-  const [cart, setCart] = useState([]);
+
 
   const handleBuyClick = (game) => {
     const searchTerm = encodeURIComponent(game.name);
@@ -10,17 +10,12 @@ export default function GameShop({ games }) {
     window.open(steamUrl, "_blank");
     setCart([...cart, game]);
   };
-  const handleBuyClick = (game) => {
-    const searchTerm = encodeURIComponent(game.name);
-    const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
-    window.open(steamUrl, "_blank");
-    setCart([...cart, game]);
-  };
+
 
   console.log(games);
-  console.log(games);
 
-  return (
+
+
   return (
 
     <section className="gameshop-view">

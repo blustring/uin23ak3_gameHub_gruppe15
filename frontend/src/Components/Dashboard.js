@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Login from '../lib/sanity/Login';
-import React, { useState, useEffect } from 'react';
-import Login from '../lib/sanity/Login';
-import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import MyGames from "../lib/sanity/MyGames";
-import MyGames from "../lib/sanity/MyGames";
+
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
