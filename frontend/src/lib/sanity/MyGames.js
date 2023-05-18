@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import sanityClient from './sanityClient';
 
 const MyGames = ({ games, displayCount }) => {
   const [fetchedGames, setFetchedGames] = useState([]);
   const [gameCount, setGameCount] = useState(0); // Add gameCount state
 
+  const isFavorit = (id) => {
+    const favGame = localStorage.getItem(id);
+
+    return favGame !== null;
+  };
+
   useEffect(() => {
     async function fetchGames() {
+      // 1. Få tak i innlogget user
+      // 2. Hent ut ID på denne user (userId)
+      // oppdater "gamesQuery" (linje 20) => `*[_type == "game"] && connectedUser == $userId{ - ish
       const gamesQuery = `*[_type == "game"] {
         id,
         slug,

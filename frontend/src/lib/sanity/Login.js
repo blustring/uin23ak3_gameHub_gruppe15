@@ -29,6 +29,9 @@ const Login = ({ onLogin }) => {
       return false;
     } else {
       const user = result[0];
+      // Lagre til localStorage (user)
+      // Husk lagre det som (key => value), hvor key er "user"
+
       // Simulate successful login for demonstration purposes
       console.log('Login successful');
       return true;

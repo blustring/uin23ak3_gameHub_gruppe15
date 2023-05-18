@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-//import Login from '../lib/sanity/Login';
+import Login from '../lib/sanity/Login';
+import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import MyGames from "../lib/sanity/MyGames";
-
 
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
@@ -38,59 +38,22 @@ export default function Dashboard({ games }) {
     // remove game from favoriteGames state
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
-
-  /*const handleLogout = () => {
-    setLoggedIn(false);
-  };*/
-
-  /*if (!loggedIn) {
-  const [favoriteGames, setFavoriteGames] = useState([]);
-  const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
-  const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
-  const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
-
-  useEffect(() => {
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
-    setFavoriteGames(favorites);
-    setFavoriteGamesCount(favorites.length);
-  }, []);
-
-  useEffect(() => {
-    // retrieve favorite games from localStorage
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
-    setFavoriteGames(favorites);
-  }, []);
-
-  const handleBuyClick = (game) => {
-    const searchTerm = encodeURIComponent(game.name);
-    const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
-    window.open(steamUrl, "_blank");
-  };
-
-  const handleRemoveFromFavorites = (id) => {
-    // remove game from localStorage
-    localStorage.removeItem(id);
-    // remove game from favoriteGames state
-    setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
-  };
    
-  const handleLogin = () => {
+  /*const handleLogin = () => {
     setLoggedIn(true);
   };
 
-  /*const handleLogout = () => {
+  //login email: mejohan@hiof.no  
+  const handleLogout = () => {
     setLoggedIn(false);
-  };*/
+  };
 
-  /*if (!loggedIn) {
+  const isLoggedin = () => {
+    // Sjekke om det finnes en user i localStorage
+    return false;
+  }
+
+  if (!isLoggedin()) {
     return (
       <div>
         <h2>Please log in</h2>

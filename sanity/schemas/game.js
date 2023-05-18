@@ -94,5 +94,11 @@ export default {
       type: 'array',
       of: [{ type: 'string' }],
     },
+    {
+      name: 'connectedUser',
+      title: 'User',
+      type: 'reference',
+      to: [{type: 'user'}],
+    },
   ],
 };
