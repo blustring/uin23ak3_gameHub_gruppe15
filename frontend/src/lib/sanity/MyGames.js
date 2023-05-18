@@ -54,7 +54,6 @@ const MyGames = ({ games, displayCount }) => {
   const displayedGames = fetchedGames.slice(0, displayCount);
 
   return (
-
     <section className="gameshop-view">
       <h2>MY GAMES-LIBRARY ({gameCount} games)</h2>
       <div className="gameshop-grid">
@@ -68,18 +67,13 @@ const MyGames = ({ games, displayCount }) => {
               {game.gameGenre !== null && (
                 <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
               )}<Link to={`/mygames/${game.slug}`}>
-                  <button type="button">View Details</button>
-                </Link>
+                <button type="button">View Details</button>
+              </Link>
             </div>
           </div>
-
         ))}
-
       </div>
-
     </section>
-
-
   );
 };
 

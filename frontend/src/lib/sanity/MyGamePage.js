@@ -31,11 +31,11 @@ const MyGamePage = () => {
 
     async function fetchGameFromApi(id) {
       fetch(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setGame(data);
-      })
-      .catch((error) => console.log(error));
+        .then((response) => response.json())
+        .then((data) => {
+          setGame(data);
+        })
+        .catch((error) => console.log(error));
     }
 
     fetchGame();
@@ -47,7 +47,6 @@ const MyGamePage = () => {
 
   return (
     <div>
-      <h2>{fetchedGame.name}</h2>
       <img src={fetchedGame.image} alt={fetchedGame.name} />
         <p><b>Rating: </b>{game?.rating}</p>
         <p><b>Plot:</b> {game?.description_raw}</p>
