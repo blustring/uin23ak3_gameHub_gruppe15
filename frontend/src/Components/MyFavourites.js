@@ -8,9 +8,10 @@ export default function MyFavorites() {
 
   useEffect(() => {
     // retrieve favorite games from localStorage
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
+    const favorites = Object.keys(localStorage)
+      .filter((key) => key !== "user")
+      .map((key) => JSON.parse(localStorage.getItem(key)
+    ));
     setFavoriteGames(favorites);
     setFavoriteGamesCount(favorites.length);
   }, []);
