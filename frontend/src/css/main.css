@@ -1,6 +1,28 @@
 /*--------- some special id's---------*/
+#gameshopName {
+  text-decoration: none !important;
+}
+
+#userName {
+  color: #021b02;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+#userName:hover {
+  background-color: #b94c4c;
+  color: #021b02;
+  border-radius: 5px;
+}
+
 #removeFav {
   width: fit-content;
+}
+
+#loginBtn {
+  width: fit-content;
+  margin: auto;
 }
 
 .vl {
@@ -123,9 +145,11 @@ button:hover {
   font-size: 20px;
 }
 .header-nav .logo-container h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin: 0;
-  padding-bottom: 5px;
+  padding: 5px;
+  color: #060101;
+  text-decoration: none;
 }
 
 .nav-container ul {
@@ -339,6 +363,34 @@ button:hover {
     grid-row-end: 3;
     grid-column: 1/span 3;
   }
+}
+/*--------------- login page--------*/
+.login-container {
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #46cdcd;
+  border-radius: 5px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.login-form > div {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type=email] {
+  padding: 10px;
+  border-radius: 3px;
+  border: 2px solid #310101;
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */

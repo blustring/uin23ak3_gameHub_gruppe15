@@ -1,13 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
+    const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+    const username = userFromLocalStorage ? userFromLocalStorage.name : '';
     return (
         <div id="layoutContainer">
             <div className="header-nav">
                 <header>
                     <div className="logo-container">
-                        <Link to="/">
-                            <h2>MACs Gamehub</h2>
+                        <Link id="gameshopName" to="/">
+                            <h2 >MACs Gamehub</h2>
                         </Link>
                     </div>
                 </header>
@@ -16,6 +18,9 @@ export default function Layout() {
                         <li><Link to="/gameshop">Shop</Link></li>
                         <li><Link to="/mygames">My Games</Link></li>
                         <li><Link to="/myfavourites">Favourites</Link></li>
+                        <li id="userName">{username}</li>
+                        <li><Link to="/gameshop" onClick={() => localStorage.removeItem('user')}>Logout</Link></li>
+
                     </ul>
                 </nav>
             </div>
@@ -34,4 +39,4 @@ export default function Layout() {
         </div >
     )
 }
-//Kilde: https://github.com/ackarlse/gitcollab/blob/main/src/components/Layout.js
+////Kilde: https://github.com/ackarlse/gitcollab/blob/main/src/components/Layout.js

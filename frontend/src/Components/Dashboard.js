@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import MyGames from "../lib/sanity/MyGames";
-
+import { Link } from 'react-router-dom';
+import MyGames from '../lib/sanity/MyGames';
+import Login from '../lib/sanity/Login';
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+  const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
 
   useEffect(() => {
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
+    const favorites = Object.keys(localStorage)
+      .filter((key) => key !== "user")
+      .map((key) => JSON.parse(localStorage.getItem(key)));
+      
     setFavoriteGames(favorites);
     setFavoriteGamesCount(favorites.length);
-  }, []);
-
-  useEffect(() => {
-    // retrieve favorite games from localStorage
-    const favorites = Object.keys(localStorage).map((key) =>
-      JSON.parse(localStorage.getItem(key))
-    );
-    setFavoriteGames(favorites);
   }, []);
 
   const handleBuyClick = (game) => {
     const searchTerm = encodeURIComponent(game.name);
     const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
-    window.open(steamUrl, "_blank");
+    window.open(steamUrl, '_blank');
   };
 
   const handleRemoveFromFavorites = (id) => {
@@ -36,6 +30,24 @@ export default function Dashboard({ games }) {
     setFavoriteGames(favoriteGames.filter((game) => game.id !== id));
   };
 
+  const handleLogin = () => {
+    setLoggedIn(true);
+  };
+
+  const isLoggedin = () => {
+    // Check if there is a user in localStorage
+    const user = localStorage.getItem('user');
+    return !!user;
+  };
+
+  if (!isLoggedin()) {
+    return (
+      <div>
+        <h2>Please log in</h2>
+        <Login onLogin={handleLogin} />
+      </div>
+    );
+  }
 
   return (
     <main>
@@ -82,22 +94,23 @@ export default function Dashboard({ games }) {
 
         <section id="my-favorites">
           <div className="vl">
-            <h2>MY FAVOURITE ({favoriteGamesCount} GAMES)</h2>
+            <h2>MY FAVOURITES ({favoriteGamesCount} GAMES)</h2>
             {slicedFavoriteGames.map((game) => (
               <div key={game.id} className="game-card-wrapper">
                 <div className="game-card-img">
+                  <h3>{game.name}</h3>
                   <img src={game.background_image} alt={game.name} />
                   <button onClick={() => handleRemoveFromFavorites(game.id)}>
                     Remove from Favorites
                   </button>
-                  <h3>{game.name}</h3>
+                  
                 </div>
                 <div className="game-card-details">
                 </div>
               </div>
             ))}
             <Link to="/myfavourites">
-              <button type="button">Go to favorites</button>
+              <button type="button">Go to favourites</button>
             </Link>
           </div>
 

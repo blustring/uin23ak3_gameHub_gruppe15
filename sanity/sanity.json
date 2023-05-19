@@ -1,0 +1,13 @@
+{
+    "api": {
+      "projectId": "tlexghg7",
+      "dataset": "game_data"
+    },
+    "plugins": [
+      "@sanity/base",
+      "@sanity/default-layout",
+      "@sanity/default-login",
+      "@sanity/desk-tool"
+    ]
+  }
+  

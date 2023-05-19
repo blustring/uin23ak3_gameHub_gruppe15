@@ -1,4 +1,4 @@
-
+// user.js
 
 export default {
   name: 'user',

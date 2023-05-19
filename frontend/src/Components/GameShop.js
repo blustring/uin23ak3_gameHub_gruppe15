@@ -1,9 +1,10 @@
 import { useState } from "react";
+import useAuthentication from '../lib/sanity/userAuthentication';
 
 export default function GameShop({ games }) {
   const [cart, setCart] = useState([]);
 
-  //useAuthentication();
+  useAuthentication();
 
   const handleBuyClick = (game) => {
     const searchTerm = encodeURIComponent(game.name);
@@ -11,7 +12,6 @@ export default function GameShop({ games }) {
     window.open(steamUrl, "_blank");
     setCart([...cart, game]);
   };
-  console.log(games);
 
   return (
     <section className="gameshop-view">
