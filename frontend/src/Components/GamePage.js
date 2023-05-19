@@ -55,7 +55,6 @@ export default function GamePage({ onAddFavorite }) {
       // oppdater user med ny idListe
       await transaction.createOrReplace(updatedUser).commit();
 
-      console.log('User updated successfully.');
     } catch (error) {
       console.error('Error updating:', error);
     }
