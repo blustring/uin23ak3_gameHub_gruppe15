@@ -12,7 +12,6 @@ export default function GameShop({ games }) {
     window.open(steamUrl, "_blank");
     setCart([...cart, game]);
   };
-  console.log(games);
 
   return (
     <section className="gameshop-view">

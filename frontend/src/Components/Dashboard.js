@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import MyGames from '../lib/sanity/MyGames';
 import Login from '../lib/sanity/Login';
-
 export default function Dashboard({ games }) {
   const [favoriteGames, setFavoriteGames] = useState([]);
   const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
-  console.log(loggedIn);
 
   useEffect(() => {
     const favorites = Object.keys(localStorage)
@@ -35,10 +33,6 @@ export default function Dashboard({ games }) {
   const handleLogin = () => {
     setLoggedIn(true);
   };
-
-  /*const handleLogout = () => {
-    setLoggedIn(false);
-  };*/
 
   const isLoggedin = () => {
     // Check if there is a user in localStorage
@@ -104,12 +98,11 @@ export default function Dashboard({ games }) {
             {slicedFavoriteGames.map((game) => (
               <div key={game.id} className="game-card-wrapper">
                 <div className="game-card-img">
-                  <h3>{game.name}</h3>
                   <img src={game.background_image} alt={game.name} />
                   <button onClick={() => handleRemoveFromFavorites(game.id)}>
                     Remove from Favorites
                   </button>
-                  
+                  <h3>{game.name}</h3>
                 </div>
                 <div className="game-card-details">
                 </div>

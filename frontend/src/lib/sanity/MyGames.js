@@ -9,11 +9,11 @@ const MyGames = ({ games, displayCount }) => {
 
   useAuthentication();
 
-  /*const isFavorit = (id) => {
+  const isFavorit = (id) => {
     const favGame = localStorage.getItem(id);
 
     return favGame !== null;
-  };*/
+  };
 
   // 1. Få tak i innlogget user
   const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));

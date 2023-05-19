@@ -31,6 +31,8 @@ const Login = ({ onLogin }) => {
       localStorage.setItem('user', JSON.stringify(user));
 
       // Successful login
+      // Pag reload like thi is not optimal, i would've done it different if i had more time.
+      window.location.href = '/';
       return true;
     }
     
