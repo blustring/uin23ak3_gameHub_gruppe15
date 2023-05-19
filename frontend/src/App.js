@@ -45,3 +45,4 @@ export default function App() {
     </Routes>
   );
 }
+ //Kilde: https://www.w3schools.com/REACT/react_router.asp
