@@ -9,11 +9,11 @@ const MyGames = ({ games, displayCount }) => {
 
   useAuthentication();
 
-  const isFavorit = (id) => {
+  /*const isFavorit = (id) => {
     const favGame = localStorage.getItem(id);
 
     return favGame !== null;
-  };
+  };*/
 
   // 1. Få tak i innlogget user
   const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
@@ -21,6 +21,7 @@ const MyGames = ({ games, displayCount }) => {
   useEffect(() => {
     async function fetchGames(id, user) {
       // 2. Hent ut ID på denne user (userId)
+      //Source: https://www.sanity.io/docs/how-queries-work#584ed2426ff5  <-  Hvordan jeg hentet sjanger
       const gamesQuery = `*[_type == "game" && $userId in connectedUser[]._ref]{
         id,
         slug,
@@ -28,7 +29,7 @@ const MyGames = ({ games, displayCount }) => {
         release_date,
         developer,
         publisher,
-        gameGenre[]->,
+        gameGenre[]->,  
         hoursPlayed,
         image,
         rating,
@@ -65,7 +66,7 @@ const MyGames = ({ games, displayCount }) => {
             </div>
             <div className="game-card-details">
               <h2>{game.name}</h2>
-              <p>Hours played:{game.hoursPlayed}</p>
+              <p>Hours played: {game.hoursPlayed}</p>
               {game.gameGenre !== null && (
                 <p>{game.gameGenre.map((genre) => genre.name).join(', ')}</p>
                 

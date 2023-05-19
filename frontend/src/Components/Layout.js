@@ -1,6 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
+    const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+    const username = userFromLocalStorage ? userFromLocalStorage.name : '';
     return (
         <div id="layoutContainer">
             <div className="header-nav">
@@ -16,6 +18,7 @@ export default function Layout() {
                         <li><Link to="/gameshop">Shop</Link></li>
                         <li><Link to="/mygames">My Games</Link></li>
                         <li><Link to="/myfavourites">Favourites</Link></li>
+                        <li>{username}</li>
                         <li><Link to="/gameshop" onClick={() => localStorage.removeItem('user')}>Logout</Link></li>
 
                     </ul>
