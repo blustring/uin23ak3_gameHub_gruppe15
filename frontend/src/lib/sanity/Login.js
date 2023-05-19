@@ -37,16 +37,17 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={handleEmailChange} required />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <div className="login-container">
+    <h2>Login</h2>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter your email"  value={email} onChange={handleEmailChange} required />
+      </div>
+      <button id="loginBtn" type="submit">Login</button>
+    </form> 
+  </div>
+  
   );
 };
 

@@ -30,21 +30,32 @@ $footer-font-size: 1rem;
   }
 }
 
+/*--------- some special id's---------*/
+
 #removeFav {
-
   width: fit-content;
-
 }
 
+#loginBtn{
+  width: fit-content;
+  margin: auto;
+}
 
 .vl {
-  border-left: 6px solid rgb(204, 7, 7);
+  border-left: 6px solid rgb(175, 35, 35);
   padding-left: 20px;
   margin-left: 10px;
   margin-left: 10px;
 }
+.gridt {
+  display: flex;
+}
 
-/* Style for buttons */
+#linkdiv {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+/* ------------Style for buttons---------------- */
 button {
   @include button-style;
 }
@@ -56,36 +67,30 @@ button {
   padding: $game-page-padding;
   margin-left: 10px;
   gap: $game-page-gap;
-
-
 }
-
 #imgGamePage {
   grid-column: 1 / 2;
-
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
-
 #detailsGamePage {
   grid-column: 2 / 3;
 }
 
-/* Media queries for responsive design */
+
+/* ---------Media queries for responsive design for GamePage ---------------*/
 @media (max-width: 768px) {
   #gamePageAlone {
     grid-template-columns: 1fr;
     padding: 20px;
     margin-left: 0;
   }
-
   #imgGamePage {
     grid-column: auto;
   }
-
   #detailsGamePage {
     grid-column: auto;
   }
@@ -95,38 +100,34 @@ button {
   #gamePageAlone {
     padding: 10px;
   }
+  
 }
-
-
-
-
-
 #gamePageAlone {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   padding: 20px;
   margin-left: 0;
 }
 
 #imgGamePage {
   grid-column: auto;
+  width: 100%;
 }
-
 #detailsGamePage {
   grid-column: auto;
 }
-}
 
-@media (max-width: 480px) {
+@media (max-width: 904px) {
   #gamePageAlone {
+    grid-template-columns: 1fr;
     padding: 10px;
+     #imgGamePage {
+      width: 100%;
+    }
   }
 }
 
 
-
-
-
-/*----------------Layout---------------*/
+/*-------------------Layout design-------------------*/
 #layoutContainer {
 
   display: grid;
@@ -137,9 +138,7 @@ button {
     "footer footer";
 }
 
-
-
-/* Style the header */
+/* -----Style the header------ */
 .header-nav {
   grid-area: header;
   display: flex;
@@ -151,16 +150,14 @@ button {
 
 
   .logo-container h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin: 0;
     padding-bottom: 5px;
   }
-
-  font-size: 2rem;
   margin: 0;
   padding-bottom: 5px;
+  font-size: 20px;
 }
-
 .nav-container ul {
   list-style: none;
   display: flex;
@@ -169,26 +166,8 @@ button {
   margin: 0;
   padding: 0;
 }
-
-.nav-container ul {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
 .nav-container li {
   margin-right: 20px;
-}
-
-.nav-container li {
-  margin-right: 20px;
-}
-
-.nav-container li:last-child {
-  margin-right: 0;
 }
 
 .nav-container li:last-child {
@@ -201,14 +180,6 @@ button {
   font-weight: bold;
   padding: 5px;
   transition: all 0.3s ease;
-
-  .nav-container a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px;
-    transition: all 0.3s ease;
-
     &:hover {
       background-color: #333;
       color: #fff;
@@ -216,106 +187,35 @@ button {
     }
   }
 
-  &:hover {
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-  }
-}
-}
 
-
-
-/* Style the main content */
+/* -------Style the main content------- */
 .main-div {
-  margin: 0 auto;
+  grid-area: main;
+  margin: auto auto;
   padding: $main-padding;
 }
 
-/* Style the footer */
+/*------- Style the footer------------ */
 .footer-div {
   grid-area: footer;
   background-color: $background-color;
   color: #fff;
   padding: $footer-padding;
   text-align: center;
-
   p {
     margin: 0;
     font-size: $footer-font-size;
   }
-
   a {
     color: #fff;
     text-decoration: none;
-
     &:hover {
       text-decoration: underline;
     }
   }
 }
 
-/*---------------gridit---------------------*/
-.gridt {
-  display: flex;
-}
-
-#linkdiv {
-  margin-top: 15px;
-  margin-left: 5px;
-}
-
-/*----------------Gamecard page----------------*/
-.game-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
-  align-items: center;
-}
-
-.left img {
-  width: 100%;
-  height: auto;
-}
-
-.right {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 10px;
-  align-items: start;
-}
-
-.right>div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.right h4 {
-  margin: 0;
-  font-size: 30px;
-}
-
-.right p {
-  margin: 0;
-  font-size: 18px;
-}
-
-.right button {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #3e8e41;
-  }
-}
-
-/*----------------GameShop page----------------*/
+/*----------------GameShop, GameLibrary and Favoirite page----------------*/
 .gameshop-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -323,102 +223,25 @@ button {
   padding: 0;
   margin: 0;
 }
-
-display: flex;
-}
-
-#linkdiv {
-  margin-top: 15px;
-  margin-left: 5px;
-}
-
-/*----------------Gamecard page----------------*/
-.game-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
-  align-items: center;
-}
-
-.left img {
-  width: 100%;
-  height: auto;
-}
-
-.right {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 10px;
-  align-items: start;
-}
-
-.right>div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.right h4 {
-  margin: 0;
-  font-size: 30px;
-}
-
-.right p {
-  margin: 0;
-  font-size: 18px;
-}
-
-.right button {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #3e8e41;
-  }
-}
-
-/*----------------GameShop page----------------*/
-.gameshop-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-}
-
-
-
 .game-card-wrapper {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-
 }
-
 .game-card-img {
   width: 100%;
   height: 100%;
-
 }
-
 .game-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   gap: $game-page-gap;
 }
-
 .game-card-details {
   display: flex;
   flex-direction: column;
-
 }
-
 .game-card-details h2,
 .game-card-details p {
   margin: 0;
@@ -426,87 +249,47 @@ display: flex;
 
 }
 
-
-
-/*----------------Dashboard------------*/
+/*----------------Dashboard design-----------------*/
 #dashboardContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto auto auto;
   padding: 10px;
-  margin-left: 2rem;
-  width: 100%;
-
-
+ 
 }
-
-#dashboardBorder {
-  border-style: solid;
-
-}
-
 #dashboardBorder {
   border-style: solid;
   border-width: 5px;
   padding: 1rem;
-  background-color: gray;
-
+  background-color: #a0c8d3;
 }
-
-}
-
 #gameshop {
-
   grid-column-start: span 3;
 }
-
-
 #myGames {
-
-  grid-row: 2 / span 2;
+  grid-row: 2 ;
   grid-column: 1 / span 2;
 }
-
 #myFavourites {
-
-  grid-row: 2 / span 3;
+  grid-row: 2 ;
   grid-column: 3 / span 3;
-
-
 }
-
 #libraryView {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 
-  .gameshop-view .gameshop-grid {
+ .gameshop-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 0;
     margin: 0;
   }
-
-  @media (max-width: 768px) {
+  @media screen and (max-width: 780px) {
     #libraryView {
       grid-template-columns: 1fr;
     }
-
-    .gameshop-view .gameshop-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 0;
-      margin: 0;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-
-
-    #libraryView {
-      grid-template-columns: 1fr;
-    }
+    
 
     .gameshop-view .gameshop-grid {
       display: grid;
@@ -516,88 +299,111 @@ display: flex;
       margin: 0;
     }
 
-  }
-}
+}}
 
 
-
-
-/* Media Queries */
+/* ---------------Media Queries for nav bar--------------- */
 @media (max-width: 768px) {
-
-  /* Styles for screens up to 768px */
   .header-nav {
     flex-direction: column;
   }
-
   .nav-container li {
     margin-right: 0;
     margin-bottom: 10px;
   }
 }
-
 @media (min-width: 769px) and (max-width: 1024px) {
 
-  /* Styles for screens between 769px and 1024px */
   .nav-container li {
     margin-right: 10px;
   }
 }
-
 @media (min-width: 1025px) {
 
-  /* Styles for screens larger than 1024px */
   .header-nav {
     justify-content: space-between;
   }
 }
 
 
-
-/* Media Queries   .gameshop-grid  */
+/* ------------Media Queries   .gameshop-grid--------------  */
 @media (max-width: 768px) {
-
-  /* Styles for screens up to 768px */
-  .gameshop-grid,
-  #libraryView,
-  #myFavourites {
+  .gameshop-grid{
     grid-template-columns: repeat(1, 1fr);
   }
-
-  .game-card-wrapper,
-  #myFavourites {
+  .game-card-wrapper{
     flex-direction: column;
   }
-
-  .game-card-img,
-  #libraryView,
-  #myFavourites {
-    height: auto;
-  }
-
-  .game-card-details,
-  #libraryView,
-  #myFavourites {
+  .game-card-details{
     padding: 10px 0;
-  }
-
-
+  }}
   @media (min-width: 769px) and (max-width: 1024px) {
-
-    /* Styles for screens between 769px and 1024px */
     .gameshop-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-
-
   }
-
   @media (min-width: 1025px) {
-
-    /* Styles for screens larger than 1024px */
     .gameshop-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
+/* ------------Media Queries Dashboard--------------  */
+@media (max-width: 746px) {
+  #dashboardContainer{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto;
+    margin: auto;
+    justify-content: end;
+   
+    #gameshop{
+      grid-column-start: span 3;
+    }
+    #myGames{
+      grid-row-start: 2 ;
+      grid-row-end:2;
+      grid-column: 1 / span 3;
+      
+    }
+    #my-favorites{
+      grid-row-start: 3 ;
+      grid-row-end:3;
+      grid-column: 1 / span 3;
+
+    }
+
+  }
+  }
+/*--------------- login page--------*/
+.login-container {
+
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #46cdcd;
+  border-radius: 5px;
 }
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.login-form > div {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="email"] {
+  padding: 10px;
+  border-radius: 3px;
+  border: 2px solid #310101;
+  margin-left: 10px;
+}
+
+
+
+  
