@@ -8,8 +8,8 @@ export default function Layout() {
             <div className="header-nav">
                 <header>
                     <div className="logo-container">
-                        <Link to="/">
-                            <h2>MACs Gamehub</h2>
+                        <Link id="gameshopName" to="/">
+                            <h2 >MACs Gamehub</h2>
                         </Link>
                     </div>
                 </header>

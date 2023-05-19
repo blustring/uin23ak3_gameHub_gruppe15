@@ -31,6 +31,9 @@ $footer-font-size: 1rem;
 }
 
 /*--------- some special id's---------*/
+#gameshopName{
+  text-decoration: none !important;
+}
 #userName{
   color: #021b02;
   font-size: 1rem;
@@ -165,7 +168,7 @@ button {
     font-size: 2rem;
     margin: 0;
     padding: 5px;
-    color: #bb1d1d;
+    color: #060101;
     text-decoration: none;
   }
   margin: 0;
