@@ -9,8 +9,6 @@ export default function GamePage({ onAddFavorite }) {
 
   useAuthentication();
 
-  console.log(games);
-
   const API_KEY = "e00c96374e5247b58471e9ee8f5e4770";
 
   useEffect(() => {
@@ -35,7 +33,7 @@ export default function GamePage({ onAddFavorite }) {
 
   async function updateFavorits() {
     const transaction = sanityClient.transaction();
-    
+
     try {
       //finn user id
       const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
@@ -48,15 +46,15 @@ export default function GamePage({ onAddFavorite }) {
       }
 
       oldFavorits.push(game.id);
-  
+
       const updatedUser = {
         ...currentUser,
         favorits: oldFavorits,
       };
-  
+
       // oppdater user med ny idListe
       await transaction.createOrReplace(updatedUser).commit();
-      
+
       console.log('User updated successfully.');
     } catch (error) {
       console.error('Error updating:', error);
@@ -64,8 +62,8 @@ export default function GamePage({ onAddFavorite }) {
   }
 
   const handleBuyClick = () => {
-    
-  const searchTerm = encodeURIComponent(game?.name);
+
+    const searchTerm = encodeURIComponent(game?.name);
     const steamUrl = `https://store.steampowered.com/search/?term=${searchTerm}`;
     window.open(steamUrl, "_blank");
   };
