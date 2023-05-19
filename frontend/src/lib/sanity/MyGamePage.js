@@ -48,8 +48,13 @@ const MyGamePage = () => {
   }
 
   return (
-    <div>
-      <img src={fetchedGame.image} alt={fetchedGame.name} />
+    <section id="gamePageAlone">
+      <div id="imgGamePage">
+        <img src={fetchedGame.image} alt={fetchedGame.name} />
+      </div>
+
+      <div id="detailsGamePage">
+      <h1>{game?.name}</h1>
         <p><b>Rating: </b>{game?.rating}</p>
         <p><b>Plot:</b> {game?.description_raw}</p>
         <p><b>Tags:</b> {game?.tags?.map((tag) => tag.name).join(", ")}</p>
@@ -60,6 +65,7 @@ const MyGamePage = () => {
         <p><b>Platforms:</b> {game?.platforms?.map((platform) => platform.platform.name).join(", ")}</p>
         <p><b>Stores:</b> {game?.stores?.map((store) => store.store.name).join(", ")}</p>
     </div>
+    </section>
   );
 };
 
