@@ -8,6 +8,7 @@ export default function Dashboard({ games }) {
   const slicedFavoriteGames = favoriteGames.slice(0, 2); // Slice the favoriteGames array to get only two games
   const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false); // Add state for login status
+  console.log(loggedIn);
 
   useEffect(() => {
     const favorites = Object.keys(localStorage)
@@ -35,9 +36,9 @@ export default function Dashboard({ games }) {
     setLoggedIn(true);
   };
 
-  const handleLogout = () => {
+  /*const handleLogout = () => {
     setLoggedIn(false);
-  };
+  };*/
 
   const isLoggedin = () => {
     // Check if there is a user in localStorage
@@ -99,7 +100,7 @@ export default function Dashboard({ games }) {
 
         <section id="my-favorites">
           <div className="vl">
-            <h2>MY FAVOURITE ({favoriteGamesCount} GAMES)</h2>
+            <h2>MY FAVOURITES ({favoriteGamesCount} GAMES)</h2>
             {slicedFavoriteGames.map((game) => (
               <div key={game.id} className="game-card-wrapper">
                 <div className="game-card-img">
@@ -114,7 +115,7 @@ export default function Dashboard({ games }) {
               </div>
             ))}
             <Link to="/myfavourites">
-              <button type="button">Go to favorites</button>
+              <button type="button">Go to favourites</button>
             </Link>
           </div>
 
