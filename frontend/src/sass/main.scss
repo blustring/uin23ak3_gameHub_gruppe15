@@ -31,6 +31,18 @@ $footer-font-size: 1rem;
 }
 
 /*--------- some special id's---------*/
+#userName{
+  color: #021b02;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px;
+  transition: all 0.3s ease;
+    &:hover {
+      background-color: #b94c4c;
+      color: #021b02;
+      border-radius: 5px;
+    }
+}
 
 #removeFav {
   width: fit-content;
@@ -150,13 +162,16 @@ button {
 
 
   .logo-container h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
-    padding-bottom: 5px;
+    padding: 5px;
+    color: #bb1d1d;
+    text-decoration: none;
   }
   margin: 0;
   padding-bottom: 5px;
   font-size: 20px;
+  
 }
 .nav-container ul {
   list-style: none;

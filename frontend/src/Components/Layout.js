@@ -18,7 +18,7 @@ export default function Layout() {
                         <li><Link to="/gameshop">Shop</Link></li>
                         <li><Link to="/mygames">My Games</Link></li>
                         <li><Link to="/myfavourites">Favourites</Link></li>
-                        <li>{username}</li>
+                        <li id="userName">{username}</li>
                         <li><Link to="/gameshop" onClick={() => localStorage.removeItem('user')}>Logout</Link></li>
 
                     </ul>

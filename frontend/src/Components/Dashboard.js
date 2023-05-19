@@ -104,11 +104,12 @@ export default function Dashboard({ games }) {
             {slicedFavoriteGames.map((game) => (
               <div key={game.id} className="game-card-wrapper">
                 <div className="game-card-img">
+                  <h3>{game.name}</h3>
                   <img src={game.background_image} alt={game.name} />
                   <button onClick={() => handleRemoveFromFavorites(game.id)}>
                     Remove from Favorites
                   </button>
-                  <h3>{game.name}</h3>
+                  
                 </div>
                 <div className="game-card-details">
                 </div>
